@@ -1,1 +1,132 @@
-Hello World!
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lawwaikit - Personal Site</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-brand" href="index.html">Lawwaikit</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+      <li><a href="about.html" data-i18n="nav.about">关于</a></li>
+      <li><a href="projects.html" data-i18n="nav.projects">项目</a></li>
+      <li><a href="blog.html" data-i18n="nav.blog">博客</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
+      <li class="nav-actions">
+        <button id="langToggle" class="pill-button" type="button" aria-label="Switch language">EN</button>
+        <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle theme">◐</button>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero profile-hero">
+      <div class="hero-inner">
+        <p class="eyebrow" data-i18n="home.eyebrow">个人网站 / 项目经验 / 技术博客</p>
+        <h1 data-i18n="home.title">你好，我是 Lawwaikit</h1>
+        <p class="subtitle" data-i18n="home.subtitle">我构建清晰、可靠、可长期维护的 Web 体验，也把学习过程和项目复盘沉淀成文章。</p>
+        <div class="hero-tags" aria-label="Core skills">
+          <span data-i18n="home.tag.frontend">前端开发</span>
+          <span data-i18n="home.tag.product">产品思维</span>
+          <span data-i18n="home.tag.ai">AI 工具实践</span>
+          <span data-i18n="home.tag.writing">技术写作</span>
+        </div>
+        <div class="hero-buttons">
+          <a href="projects.html" class="btn btn-primary" data-i18n="home.cta.projects">查看项目</a>
+          <a href="contact.html" class="btn btn-secondary" data-i18n="home.cta.contact">联系我</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow" data-i18n="home.focus.eyebrow">Focus</p>
+        <h2 data-i18n="home.focus.title">我关注的方向</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="card-kicker">01</span>
+          <h3 data-i18n="home.focus.card1.title">可落地的界面</h3>
+          <p data-i18n="home.focus.card1.body">把信息架构、响应式布局和交互细节一起考虑，让页面既好看也好用。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">02</span>
+          <h3 data-i18n="home.focus.card2.title">项目经验沉淀</h3>
+          <p data-i18n="home.focus.card2.body">用项目卡片记录背景、技术栈、状态和下一步，方便持续更新个人作品集。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">03</span>
+          <h3 data-i18n="home.focus.card3.title">持续写作</h3>
+          <p data-i18n="home.focus.card3.body">将学习笔记、工具实验和项目复盘整理成文章，形成可复用的知识库。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="section-header">
+        <p class="eyebrow" data-i18n="home.projects.eyebrow">Selected Work</p>
+        <h2 data-i18n="home.projects.title">精选项目</h2>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-card-head">
+            <h3 data-i18n="project.personal.title">个人网站</h3>
+            <span class="status status-live" data-i18n="status.building">建设中</span>
+          </div>
+          <p data-i18n="project.personal.body">一个托管在 GitHub Pages 的双语个人站，用于展示名片、项目经验与博客文章。</p>
+          <div class="card-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <a class="text-link" href="projects.html" data-i18n="home.projects.more">查看详情</a>
+        </article>
+        <article class="project-card">
+          <div class="project-card-head">
+            <h3 data-i18n="project.tooling.title">AI 工具实验</h3>
+            <span class="status" data-i18n="status.placeholder">待补充</span>
+          </div>
+          <p data-i18n="project.tooling.body">用于记录 AI 辅助开发、自动化脚本或效率工具的实验项目，后续替换为真实仓库。</p>
+          <div class="card-tags">
+            <span class="tag">AI</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Notes</span>
+          </div>
+          <span class="text-link disabled" data-i18n="link.coming">链接待补充</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow" data-i18n="home.blog.eyebrow">Writing</p>
+        <h2 data-i18n="home.blog.title">最新文章</h2>
+      </div>
+      <div class="blog-list">
+        <article class="blog-item">
+          <h3><a href="post-intro.html" data-i18n="post.intro.title">欢迎来到我的个人网站</a></h3>
+          <p class="blog-meta" data-i18n="post.intro.meta">2026-06-10 · 阅读时间 2 分钟</p>
+          <p class="blog-excerpt" data-i18n="post.intro.excerpt">介绍这个网站的结构、技术实现和后续更新方式。</p>
+        </article>
+        <article class="blog-item blog-draft">
+          <h3><span data-i18n="post.draft.title">技术学习笔记（占位）</span></h3>
+          <p class="blog-meta" data-i18n="post.draft.meta">待发布 · 草稿</p>
+          <p class="blog-excerpt" data-i18n="post.draft.excerpt">这里将用于放置真实的技术笔记或项目复盘。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p data-i18n="footer.copy">© 2026 Lawwaikit. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

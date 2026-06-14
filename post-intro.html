@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎来到我的个人网站 - Lawwaikit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-brand" href="index.html">Lawwaikit</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+      <li><a href="about.html" data-i18n="nav.about">关于</a></li>
+      <li><a href="projects.html" data-i18n="nav.projects">项目</a></li>
+      <li><a href="blog.html" data-i18n="nav.blog">博客</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
+      <li class="nav-actions">
+        <button id="langToggle" class="pill-button" type="button" aria-label="Switch language">EN</button>
+        <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle theme">◐</button>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <article class="post-content">
+      <a class="text-link back-link" href="blog.html" data-i18n="post.back">返回博客</a>
+      <h1 data-i18n="post.intro.title">欢迎来到我的个人网站</h1>
+      <p class="post-meta" data-i18n="post.intro.meta">2026-06-10 · 阅读时间 2 分钟</p>
+
+      <p>你好！这是我用来整理个人名片、项目经验和技术写作的个人网站。</p>
+
+      <h2>网站结构</h2>
+      <ul>
+        <li><strong>首页</strong>：快速展示我是谁、关注什么，以及最重要的项目入口。</li>
+        <li><strong>关于</strong>：整理个人简介、技能方向和阶段性经历。</li>
+        <li><strong>项目</strong>：记录正在建设和计划补充的项目。</li>
+        <li><strong>博客</strong>：沉淀学习笔记、项目复盘和工具实践。</li>
+        <li><strong>联系</strong>：保留 GitHub 和其他后续补充的联系方式。</li>
+      </ul>
+
+      <h2>技术实现</h2>
+      <p>这个站点继续保持轻量：纯 HTML、CSS 和 JavaScript，没有构建步骤，可以直接部署到 GitHub Pages。</p>
+      <ul>
+        <li>响应式布局，适配桌面和移动端。</li>
+        <li>深色 / 浅色主题切换，并保存用户偏好。</li>
+        <li>中英双语切换，通用站点文案会记住选择。</li>
+        <li>博客先使用静态 HTML，后续可以逐篇扩展。</li>
+      </ul>
+
+      <h2>后续计划</h2>
+      <p>下一步会补充真实项目、联系方式、头像和更完整的经历。这里也会逐渐变成一个更有个人痕迹的长期主页。</p>
+    </article>
+  </main>
+
+  <footer>
+    <p data-i18n="footer.copy">© 2026 Lawwaikit. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
