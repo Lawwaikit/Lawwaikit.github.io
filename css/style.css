@@ -569,6 +569,423 @@ button {
   border-bottom: 1px solid var(--border);
 }
 
+/* ── Blog tree directory view ── */
+
+.blog-tree-section {
+  margin-bottom: 2rem;
+}
+
+.blog-tree-folder {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.blog-tree-readme {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: -0.4rem 0 0.6rem 0;
+}
+
+.blog-tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.blog-tree-item {
+  margin: 0;
+}
+
+.blog-tree-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.blog-tree-link:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.blog-tree-title {
+  font-weight: 600;
+}
+
+.blog-tree-date {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+/* 可折叠子文件夹 */
+.blog-tree-folder-li {
+  margin-bottom: 0.25rem;
+}
+
+.blog-tree-toggle {
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.75rem;
+  margin-right: 0.35rem;
+  color: var(--text-muted);
+}
+
+.blog-tree-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.blog-tree-nested {
+  list-style: none;
+  padding: 0.4rem 0 0.4rem 1.4rem;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.blog-tree-folder-li.collapsed .blog-tree-nested {
+  display: none;
+}
+
+/* ── Post rendered content ── */
+
+.post-breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.post-content-rendered h1 {
+  margin: 1rem 0 0.5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.post-content-rendered h2 {
+  margin: 2.3rem 0 0.7rem;
+  font-size: 1.45rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-content-rendered h3 {
+  margin: 1.8rem 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.post-content-rendered p,
+.post-content-rendered li {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.post-content-rendered ul,
+.post-content-rendered ol {
+  margin: 0.7rem 0 1.2rem 1.3rem;
+}
+
+.post-content-rendered ul ul {
+  margin: 0.2rem 0 0.2rem 1.3rem;
+}
+
+.post-content-rendered strong {
+  color: var(--text-primary);
+}
+
+.post-content-rendered a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.post-content-rendered a:hover {
+  text-decoration: underline;
+}
+
+/* Code blocks */
+.post-content-rendered pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.post-content-rendered code {
+  font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+  font-size: 0.88em;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+.post-content-rendered pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Tables */
+.post-content-rendered table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+}
+
+.post-content-rendered th,
+.post-content-rendered td {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-content-rendered th {
+  background: var(--surface-soft);
+  font-weight: 700;
+}
+
+.post-content-rendered tr:nth-child(even) {
+  background: var(--surface-soft);
+}
+
+/* Blockquote */
+.post-content-rendered blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  background: var(--accent-soft);
+  border-radius: 0 6px 6px 0;
+}
+
+.post-content-rendered blockquote p {
+  color: var(--text-primary);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.back-link::after {
+  content: "" !important;
+}
+
+/* ── Blog two-column layout ── */
+
+.blog-layout {
+  display: flex;
+  gap: 0;
+  min-height: calc(100vh - 68px);
+}
+
+.blog-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  padding: 1.5rem 1rem;
+  overflow-y: auto;
+  position: sticky;
+  top: 68px;
+  height: calc(100vh - 68px);
+  background: var(--bg-primary);
+}
+
+.blog-sidebar .blog-tree-link {
+  padding: 0.45rem 0.7rem;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  font-size: 0.9rem;
+}
+
+.blog-sidebar .blog-tree-link:hover {
+  background: var(--accent-soft);
+}
+
+.blog-sidebar .blog-tree-current .blog-tree-link {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  font-weight: 700;
+}
+
+.blog-sidebar .blog-tree-section {
+  margin-bottom: 1.2rem;
+}
+
+.blog-sidebar .blog-tree-folder {
+  font-size: 0.92rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-sidebar .blog-tree {
+  gap: 0.25rem;
+}
+
+.blog-sidebar .blog-tree-date {
+  display: none;
+}
+
+.blog-sidebar .blog-tree-folder-li {
+  margin-bottom: 0.15rem;
+}
+
+.blog-sidebar .blog-tree-nested {
+  padding-left: 1rem;
+}
+
+.blog-main {
+  flex: 1;
+  min-width: 0;
+  padding: 2rem 2.5rem;
+  max-width: calc(100% - 280px);
+}
+
+/* 给 TOC 留空间 */
+@media (min-width: 1101px) {
+  .blog-main {
+    padding-right: 240px;
+  }
+}
+
+/* ── TOC (table of contents) ── */
+
+.blog-toc {
+  position: fixed;
+  top: calc(68px + 2rem);
+  right: 1.5rem;
+  width: 200px;
+  padding: 1rem;
+  border-left: 1px solid var(--border);
+  font-size: 0.82rem;
+  max-height: calc(100vh - 68px - 4rem);
+  overflow-y: auto;
+}
+
+.blog-toc-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blog-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-toc-item {
+  margin: 0.2rem 0;
+}
+
+.blog-toc-link {
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.15rem 0;
+  line-height: 1.4;
+  border-left: 2px solid transparent;
+  padding-left: 0.5rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.blog-toc-link:hover {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+.blog-toc-link.level-2 {
+  padding-left: 1.2rem;
+}
+
+.blog-toc-link.level-3 {
+  padding-left: 1.9rem;
+}
+
+.blog-toc-link.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Sidebar toggle button (mobile) ── */
+
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 200;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+/* ── Responsive: mobile ── */
+
+@media (max-width: 1100px) {
+  .blog-toc {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-layout {
+    flex-direction: column;
+  }
+
+  .blog-sidebar {
+    display: none;
+    width: 100%;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    height: calc(100vh - 68px);
+    z-index: 150;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .blog-sidebar.open {
+    display: block;
+  }
+
+  .blog-main {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+  }
+
+  .sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 footer {
   padding: 2rem 1.5rem;
   background: var(--footer-bg);

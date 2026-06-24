@@ -1,0 +1,69 @@
+{
+  "rootPosts": [],
+  "folders": [
+    {
+      "name": "blog",
+      "slug": "blog",
+      "path": "",
+      "posts": [
+        {
+          "title": "00-README",
+          "slug": "00-readme",
+          "path": "00-README.md",
+          "date": "2025-09-18",
+          "readTime": "1 分钟",
+          "content": ""
+        }
+      ],
+      "folders": [
+        {
+          "name": "01-Docker",
+          "slug": "01-docker",
+          "path": "01-Docker",
+          "posts": [
+            {
+              "title": "00-README",
+              "slug": "00-readme",
+              "path": "01-Docker/00-README.md",
+              "date": "2025-09-29",
+              "readTime": "1 分钟",
+              "content": "# 参考资料\n\n[Docker — 从入门到实践 gitbook.io](https://yeasy.gitbook.io/docker_practice/appendix)"
+            },
+            {
+              "title": "01-Docker安装配置",
+              "slug": "01-docker-2",
+              "path": "01-Docker/01-Docker安装配置.md",
+              "date": "2025-09-04",
+              "readTime": "1 分钟",
+              "content": ""
+            },
+            {
+              "title": "02-Docker命令",
+              "slug": "02-docker",
+              "path": "01-Docker/02-Docker命令.md",
+              "date": "2025-10-11",
+              "readTime": "1 分钟",
+              "content": "# 镜像操作\n```bash\ndocker images # 查看镜像\n\ndocker image ls #查看镜像，等同于docker images\n\ndocker iamge rm <image_id>  # 删除镜像\ndocker rmi <image_id>  # 删除镜像\n\n#其他操作查看 docker image COMMAND --help\n```\n\n# 容器操作\n```bash\ndocker ps  # 列出正在运行的容器\n\ndocker ps -a  # 列出所有容器\n\ndocker start <con_id>  # 启动容器\ndocker stop <con_id>  # 停止容器\ndocker restart <con_id>  # 重启容器\ndocker rm <con_id>  # 删除容器\n\ndocker logs <con_id>  # 查看容器日志\n\ndocker exec -it <container> bash # 进入容器命令行\n\n#创建容器\ndocker run -d     \\\n  -p 8081:5000    \\\n  -v /root/flask_docker_demo:/app  \\\n  -e MESSAGE=\"Hello, Docker v3\"    \\\n  --name flask-demo  flask-demo:1.4\n```\n\n## docker卷管理\n```bash\ndocker volume ls      # List volumes \ndocker volume create  # Create a volume \ndocker volume inspect # Display detailed information on one or more volumes \ndocker volume prune   # Remove unused local volumes \ndocker volume rm      # Remove one or more volumes\n```\n\n## docker网络管理\n```bash\ndocker network ls\n\ndocket network create <name>\n\ndocket network inspect <name_or_id>\n```\n\n## docker排障常用\n```bash\ndocker stats  # 实时查看 CPU / 内存 / 网络 / I/O\n\ndocker events --filter container=xxx  # 查看事件\n\n\n```"
+            },
+            {
+              "title": "03-Dockerfile",
+              "slug": "03-dockerfile",
+              "path": "01-Docker/03-Dockerfile.md",
+              "date": "2025-10-11",
+              "readTime": "1 分钟",
+              "content": "[参考资料：# Docker Dockerfile](https://www.runoob.com/docker/docker-dockerfile.html)\n\ndockerfile 是一份“镜像构建脚本”，Docker 会 **从上到下逐行执行**，每条指令都会生成一个新的 **镜像层 (Layer)**。\n\n**顺序很重要**：\n\n1. FROM → 定义基础镜像\n2. WORKDIR → 设置工作目录\n3. COPY / ADD → 拷贝文件\n4. RUN → 构建阶段命令（安装依赖等）\n5. ENV → 定义环境变量\n6. EXPOSE → 声明端口\n7. CMD / ENTRYPOINT → 容器启动命令\n\n| 指令       | 用法                                           | 说明              | 注意点                            |\n| ---------- | ---------------------------------------------- | ----------------- | ------------------------------ |\n| FROM       | `FROM python:3.10-slim`                        | 指定基础镜像            | 必须在第一行                         |\n| WORKDIR    | `WORKDIR /app`                                 | 设置容器工作目录，类似 `cd`  | 后续 COPY、RUN 默认在此目录执行           |\n| COPY       | `COPY . .`                                     | 拷贝宿主机文件到容器        | 每次改动都会生成新层，尽量先 COPY 不常改的文件     |\n| ADD        | `ADD file.tar.gz /app`                         | 功能类似 COPY，但可以自动解压 | 用途少，推荐 COPY                    |\n| RUN        | `RUN apt-get update && apt-get install -y vim` | 构建镜像时执行命令         | 每条 RUN 都生成新层，合并多条命令可减少层数       |\n| ENV        | `ENV MESSAGE=\"Hello\"`                          | 定义环境变量            | 可被 CMD 或程序读取                   |\n| EXPOSE     | `EXPOSE 5000`                                  | 声明端口              | 仅文档用途，不自动映射端口                  |\n| CMD        | `CMD [\"python\", \"app.py\"]`                     | 容器启动默认命令          | 最后一条 CMD 生效，可被 docker run 命令覆盖 |\n| ENTRYPOINT | `ENTRYPOINT [\"python\"]`                        | 固定容器入口            | 配合 CMD 可传参数，增强灵活性              |\n\n## 3️⃣ 实践技巧与优化\n\n1. **缓存优化**\n    - Docker 会缓存每一层，如果上一层没变，下次构建会复用缓存。\n    - 优化顺序：先 COPY 依赖文件 → RUN 安装依赖 → 再 COPY 源码\n    ```\n    COPY requirements.txt . \n    RUN pip install --no-cache-dir -r requirements.txt \n    COPY . .\n    ```\n    - 这样修改源代码不会重新安装依赖，加快构建速度。  \n2. **减少镜像体积**\n    - 使用轻量镜像，如 `python:3.10-slim`\n    - 合并 RUN 命令，删除缓存：\n    ```\n    RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*\n    ```\n3. **热更新开发**\n  - 使用 Volume 挂载代码目录\n  - CMD 中启动程序时开启调试模式（Flask `debug=True`）\n4. **版本迭代**\n    - 每次改动生成新镜像打 tag，如 `mypythonapp:1.0 → mypythonapp:2.0`\n    - 方便回滚和管理多版本容器\n\n"
+            },
+            {
+              "title": "04-docker-compose",
+              "slug": "04-docker-compose",
+              "path": "01-Docker/04-docker-compose.md",
+              "date": "2025-10-11",
+              "readTime": "1 分钟",
+              "content": "Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。\n\n\n```bash\n# 构建并启动\ndocker-compose up --build -d\n\n# 查看日志\ndocker-compose logs -f flask\n\n# 扩容 Flask 到 3 个副本\ndocker-compose up -d --scale flask=3\n```\n\n## yml文件\n以下是一个yml文件的编写\n```yml\n# 开发环境配置\n\nservices:\n  # Flask应用\n  flask:\n    build: ./flask-app\n    container_name: flask-dev\n    ports:\n      - \"5000:5000\"\n    env_file:\n      - .env.dev\n    volumes:\n      - ./flask-app:/app  # 热加载代码\n      - ./logs/flask:/var/log/flask\n    healthcheck:\n      test: [\"CMD\", \"curl\", \"-f\", \"http://localhost:5000/healthz\"]\n      interval: 10s\n      timeout: 5s\n      retries: 5\n    depends_on:\n      - mysql\n      - redis\n    logging:\n      driver: \"json-file\"\n      options:\n        max-size: \"10m\"\n        max-file: \"3\"\n\n  # MySQL 数据库\n  mysql:\n    image: mysql:8.0\n    container_name: mysql-dev\n    env_file:\n      - .env.dev\n    ports:\n      - \"3306:3306\"\n    volumes:\n      - mysql_data_dev:/var/lib/mysql\n      - ./mysql-init/dev-init.sql:/docker-entrypoint-initdb.d/dev-init.sql # 初始化 SQL\n      - ./logs/mysql:/var/log/mysql\n    restart: always\n    healthcheck:\n      test: [\"CMD\", \"mysqladmin\", \"ping\", \"-h\", \"localhost\"]\n      interval: 5s\n      timeout: 5s\n      retries: 5\n\n  # Redis 缓存\n  redis:\n    image: redis:7.2\n    container_name: redis-dev\n    ports:\n      - \"6379:6379\"\n    volumes:\n      - redis_data_dev:/data\n    restart: always\n    healthcheck:\n      test: [\"CMD\", \"redis-cli\", \"ping\"]\n      interval: 5s\n      timeout: 5s\n      retries: 5\n\nvolumes:\n  mysql_data_dev:\n  redis_data_dev:\n\n```"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
