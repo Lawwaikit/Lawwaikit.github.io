@@ -1,0 +1,126 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "Paper & Ink",
+    "concept": "Warm cream paper, hand-set type, risograph hard shadows, subtle irregularities. No blue/purple, no gradients, no soft-blur AI look.",
+    "version": "1.0.0",
+    "exportedFrom": "css/style.css",
+    "exportedAt": "2026-07-13",
+    "formats": ["json", "css-variables"]
+  },
+
+  "color": {
+    "light": {
+      "paper":        "#F4EDE0",
+      "paper-2":      "#EBE1CF",
+      "surface":      "#FBF7EF",
+      "surface-soft": "#F0E8D8",
+      "ink":          "#221E18",
+      "ink-2":        "#6E655A",
+      "ink-3":        "#9A8F7E",
+      "line":         "#D9CDB8",
+      "accent":       "#B4431E",
+      "accent-soft":  "#F0D9CC",
+      "accent-2":     "#2C5545",
+      "accent-2-soft":"#D7E2DA",
+      "highlight":    "rgba(214, 167, 64, 0.42)",
+      "code-bg":      "#EFE6D5",
+      "ink-shadow":   "#221E18",
+      "nav-bg":       "rgba(244, 237, 224, 0.86)",
+      "footer-bg":    "#E7DCC8"
+    },
+    "dark": {
+      "paper":        "#1A1714",
+      "paper-2":      "#221E19",
+      "surface":      "#221F1A",
+      "surface-soft": "#2A2620",
+      "ink":          "#ECE4D6",
+      "ink-2":        "#A89C8B",
+      "ink-3":        "#7C7264",
+      "line":         "#3A332B",
+      "accent":       "#E0723F",
+      "accent-soft":  "#3A2A20",
+      "accent-2":     "#6BA386",
+      "accent-2-soft":"#243029",
+      "highlight":    "rgba(214, 167, 64, 0.22)",
+      "code-bg":      "#15120F",
+      "ink-shadow":   "#ECE4D6",
+      "nav-bg":       "rgba(26, 23, 20, 0.86)",
+      "footer-bg":    "#14110E"
+    },
+    "roleMap": {
+      "background":   "paper",
+      "surface":      "surface",
+      "text":         "ink",
+      "text-muted":   "ink-2",
+      "text-faint":   "ink-3",
+      "border":       "line",
+      "primary":      "accent",
+      "primary-soft": "accent-soft",
+      "secondary":    "accent-2",
+      "secondary-soft":"accent-2-soft",
+      "selection":    "highlight",
+      "code":         "code-bg"
+    }
+  },
+
+  "typography": {
+    "fontFamilies": {
+      "display": "'Fraunces', 'Noto Serif SC', Georgia, 'Songti SC', serif",
+      "body":    "'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif",
+      "mono":    "'Space Mono', 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace"
+    },
+    "typeScale": {
+      "display":  { "font": "display", "weight": 600, "size": "clamp(2.6rem, 6.5vw, 5.2rem)", "lineHeight": 1.02, "letterSpacing": "-0.02em" },
+      "h2":       { "font": "display", "weight": 600, "size": "clamp(1.8rem, 3.4vw, 2.6rem)", "lineHeight": 1.12, "letterSpacing": "-0.015em" },
+      "h3":       { "font": "display", "weight": 600, "size": "1.3rem", "lineHeight": 1.28, "letterSpacing": "-0.01em" },
+      "body":     { "font": "body", "weight": 400, "size": "17px", "lineHeight": 1.72, "letterSpacing": "0" },
+      "lead":     { "font": "body", "weight": 400, "size": "1.22rem", "lineHeight": 1.6, "letterSpacing": "0" },
+      "eyebrow":  { "font": "mono", "weight": 700, "size": "0.72rem", "lineHeight": 1, "letterSpacing": "0.22em", "transform": "uppercase" },
+      "mono-label":{ "font": "mono", "weight": 700, "size": "0.85rem", "lineHeight": 1, "letterSpacing": "0.04em" }
+    }
+  },
+
+  "spacing": {
+    "2xs": "0.15rem",
+    "xs":  "0.4rem",
+    "sm":  "0.6rem",
+    "md":  "0.9rem",
+    "lg":  "1.4rem",
+    "xl":  "1.6rem",
+    "2xl": "2rem",
+    "3xl": "2.4rem",
+    "sectionY": "4.5rem",
+    "pageY": "5rem",
+    "gridGap": "1.4rem"
+  },
+
+  "radius": {
+    "sharp": "2px",
+    "sm":    "3px",
+    "md":    "4px",
+    "lg":    "5px",
+    "pill":  "999px"
+  },
+
+  "shadow": {
+    "hard":   "3px 3px 0 var(--ink-shadow)",
+    "hardLg": "5px 5px 0 var(--ink-shadow)"
+  },
+
+  "motion": {
+    "ease-out":   "cubic-bezier(0.22, 0.61, 0.36, 1)",
+    "ease-spring":"cubic-bezier(0.34, 1.56, 0.64, 1)",
+    "linkWipe":   "background-size 0.32s var(--ease-out)",
+    "surfaceLift":"transform 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out)"
+  },
+
+  "irregularity": {
+    "cardRotationDeg": [-0.6, 0.4, -0.2],
+    "cardStaggerPx":   [0, 14, 6],
+    "kickerRotationDeg": -3,
+    "iconRotationDeg":  -2,
+    "eyebrowRuleRotateDeg": -1.5,
+    "note": "Deliberate, hand-placed offsets that break the rigid grid; straightened on <720px."
+  }
+}

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>内容策略方案 · Lawwaikit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Figtree:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Serif+SC:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/clay-cool.css">
+  <style>
+    /* 仅本预览页使用的排版辅助样式（沿用 C3 色板，不改动站点样式） */
+    :root { --c-bg:#EEF3F2; --c-ink:#283230; --c-acc:#2E8B86; --c-acc2:#5C7C84;
+            --c-soft:#E2EBE9; --c-accsoft:#DCEAE8; --c-line:#D2E1DD; --c-surface:#F8FBFA; }
+    .lead { max-width: 64ch; color: var(--c-ink); opacity:.82; line-height:1.7; font-size:1.02rem; }
+    .option-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:26px; margin-top:8px; }
+    .option-card { background:var(--c-surface); border:1px solid var(--c-line); border-radius:14px;
+                   padding:22px 22px 24px; box-shadow:0 10px 24px rgba(70,95,110,.10); }
+    .option-card h3 { font-family:'Quicksand',sans-serif; color:var(--c-acc); font-size:1.28rem; margin:0 0 2px; }
+    .option-card .tag-line { font-family:'DM Mono',monospace; font-size:.78rem; color:var(--c-acc2);
+                             text-transform:uppercase; letter-spacing:.06em; margin-bottom:12px; }
+    .option-card ul { margin:12px 0 6px; padding-left:18px; color:var(--c-ink); opacity:.85; line-height:1.6; }
+    .option-card ul li { margin:5px 0; }
+    .fit { display:inline-block; margin-top:10px; font-family:'DM Mono',monospace; font-size:.76rem;
+           color:var(--c-acc2); background:var(--c-soft); border-radius:8px; padding:4px 9px; }
+    /* 迷你线框 mock */
+    .mock { background:#fff; border:1px solid var(--c-line); border-radius:10px; padding:11px; margin:14px 0 4px; }
+    .mb { height:9px; border-radius:5px; background:var(--c-soft); margin:5px 0; }
+    .mb.sm { width:55%; } .mb.md { width:78%; } .mb.lg { height:26px; width:90%; background:var(--c-accsoft); }
+    .mrow { display:flex; gap:7px; margin:7px 0; }
+    .mcell { flex:1; height:30px; border-radius:7px; background:var(--c-soft); }
+    .mcell.a { background:var(--c-accsoft); border-left:3px solid var(--c-acc); }
+    .mpill { display:inline-block; font-family:'DM Mono',monospace; font-size:.62rem; color:var(--c-acc2);
+             background:var(--c-soft); border-radius:999px; padding:2px 7px; }
+    .mstack > div { height:14px; border-radius:5px; background:var(--c-soft); margin:5px 0; }
+    .mstack > div:nth-child(odd) { background:var(--c-accsoft); }
+    .chips { display:flex; gap:6px; flex-wrap:wrap; margin:7px 0; }
+    .chips span { font-family:'DM Mono',monospace; font-size:.6rem; color:var(--c-acc2);
+                  border:1px solid var(--c-line); border-radius:999px; padding:2px 7px; }
+    /* 对比表 */
+    .cmp { width:100%; border-collapse:collapse; margin-top:10px; background:var(--c-surface);
+           border:1px solid var(--c-line); border-radius:14px; overflow:hidden; }
+    .cmp th, .cmp td { padding:12px 14px; text-align:left; border-bottom:1px solid var(--c-line);
+                      font-size:.92rem; color:var(--c-ink); vertical-align:top; }
+    .cmp th { background:var(--c-soft); font-family:'Quicksand',sans-serif; color:var(--c-acc); }
+    .cmp td:first-child { font-family:'Quicksand',sans-serif; font-weight:600; color:var(--c-acc2); white-space:nowrap; }
+    .cmp tr:last-child td { border-bottom:none; }
+    .reco { background:var(--c-accsoft); border-left:4px solid var(--c-acc); border-radius:10px;
+            padding:16px 18px; line-height:1.75; color:var(--c-ink); }
+    .reco b { color:var(--c-acc); }
+    @media (max-width:720px){ .option-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="clay">
+  <nav class="site-nav">
+    <a class="nav-brand" href="index.html">Lawwaikit</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">关于</a></li>
+      <li><a href="projects.html">项目</a></li>
+      <li><a href="blog.html" class="active">博客</a></li>
+      <li><a href="contact.html">联系</a></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <section class="page-header">
+      <p class="eyebrow">Content Strategy</p>
+      <h1>内容策略方案</h1>
+      <p class="subtitle">先诊断现状短板，再给出 4 套可预览的内容架构方向，供你挑选。</p>
+    </section>
+
+    <!-- 诊断 -->
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Diagnosis</p>
+        <h2>现在的短板</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="card-kicker">01</span>
+          <h3>内容单薄、占位多</h3>
+          <p>项目状态多为「建设中 / 待补充」，博客空白，访客看不到真实成果。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">02</span>
+          <h3>首页 Hero 太泛</h3>
+          <p>「你好，我是 Lawwaikit」缺乏定位与记忆点，没说清「你是谁、能帮什么」。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">03</span>
+          <h3>关于页是占位时间线</h3>
+          <p>经历区写的是「下一步将替换」，没有真实故事，可信度弱。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">04</span>
+          <h3>项目无案例细节</h3>
+          <p>只有一句话 + 标签，缺少背景 / 做法 / 结果，不像作品集。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 通用内容清单 -->
+    <section class="section section-muted">
+      <div class="section-header">
+        <p class="eyebrow">Foundation</p>
+        <h2>无论选哪套，都建议先补齐</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="card-kicker">A</span>
+          <h3>一句有力定位</h3>
+          <p>用「我帮 X 做 Y」替代「你好我是 X」，例如「帮团队把测试做得更稳的工程师」。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">B</span>
+          <h3>真实头像 / 照片</h3>
+          <p>比纯文字更有温度；没有则用有设计感的字母标识（现有 LW 占位可升级）。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">C</span>
+          <h3>3–4 个真实项目</h3>
+          <p>哪怕是小工具 / 学习项目，也要写出背景、你做了什么、结果如何。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">D</span>
+          <h3>真实经历时间线</h3>
+          <p>教育 / 工作 / 关键项目，按时间排，建立可信背景。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">E</span>
+          <h3>多渠道联系方式</h3>
+          <p>邮箱 + GitHub + （微信 / LinkedIn 占位），降低联系门槛。</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-kicker">F</span>
+          <h3>一个「Now」板块</h3>
+          <p>「现在在做什么」——成本低、个性强，让人看到你是鲜活的人。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 四套方案 -->
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Options</p>
+        <h2>四套内容架构方案</h2>
+      </div>
+      <div class="option-grid">
+
+        <!-- A -->
+        <article class="option-card">
+          <h3>A · 现状精修</h3>
+          <div class="tag-line">保留结构 · 低风险</div>
+          <div class="mock">
+            <div class="mb sm"></div>
+            <div class="mb lg"></div>
+            <div class="mpill">NOW · 正在做 __</div>
+            <div class="mrow"><div class="mcell a"></div><div class="mcell"></div><div class="mcell"></div></div>
+            <div class="mb md"></div><div class="mb sm"></div>
+          </div>
+          <ul>
+            <li>保留现有 5 页结构，逐页填真实内容。</li>
+            <li>首页加「Now」横条 + 3 个真实项目卡 + 最新笔记入口。</li>
+            <li>关于页时间线换成真实经历，加头像。</li>
+            <li>博客从空白恢复为「笔记 / 资源」列表。</li>
+          </ul>
+          <span class="fit">适合：想稳中求进、先填内容再谈重构</span>
+        </article>
+
+        <!-- B -->
+        <article class="option-card">
+          <h3>B · 作品集优先</h3>
+          <div class="tag-line">Portfolio-first</div>
+          <div class="mock">
+            <div class="mb sm"></div>
+            <div class="mb lg" style="background:var(--c-accsoft);border-left:3px solid var(--c-acc)"></div>
+            <div class="mrow"><div class="mcell a"></div><div class="mcell a"></div></div>
+            <div class="mb md"></div>
+            <div class="mb sm"></div>
+          </div>
+          <ul>
+            <li>把「项目」做成站点核心，首页即强项目展示。</li>
+            <li>项目页升级为 case-study（挑战 / 过程 / 结果 / 指标 / 技术栈 / 截图）。</li>
+            <li>关于页精简为支撑；写作降为「最新 3 篇」附属。</li>
+            <li>视觉上给项目大图占位与更强排版对比。</li>
+          </ul>
+          <span class="fit">适合：想用作品说话、未来求职 / 接单</span>
+        </article>
+
+        <!-- C -->
+        <article class="option-card">
+          <h3>C · 写作 / 知识花园</h3>
+          <div class="tag-line">Writing / Digital Garden</div>
+          <div class="mock">
+            <div class="mb sm"></div>
+            <div class="mb lg" style="background:var(--c-accsoft);border-left:3px solid var(--c-acc)"></div>
+            <div class="chips"><span>#测试</span><span>#AI</span><span>#自动化</span><span>#复盘</span></div>
+            <div class="mb md"></div><div class="mb sm"></div>
+          </div>
+          <ul>
+            <li>把博客从空白变成核心，做成「数字花园」。</li>
+            <li>带分类、标签、精选；内容可 evergreen，非纯时间倒序。</li>
+            <li>加「资源 / 书签 / 工具」收藏区。</li>
+            <li>关于页强调「学习者 / 写作者」身份。</li>
+          </ul>
+          <span class="fit">适合：想以内容 / 思考建立影响力</span>
+        </article>
+
+        <!-- D -->
+        <article class="option-card">
+          <h3>D · 单页个人站</h3>
+          <div class="tag-line">Personal OS · One-pager</div>
+          <div class="mock">
+            <div class="mb sm"></div>
+            <div class="mstack">
+              <div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+            <div class="mpill">Now · About · Projects · Writing · Uses · Contact</div>
+          </div>
+          <ul>
+            <li>所有内容收进一个精致滚动页，导航锚点跳转。</li>
+            <li>新增「Uses」板块（常用工具 / 软件 / 硬件）——个性强、成本低。</li>
+            <li>维护最简单、加载最快、最易统一风格。</li>
+            <li>博客仍可作独立子页，主站只列最新几篇。</li>
+          </ul>
+          <span class="fit">适合：内容尚不多、想极简统一快速上线</span>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 对比 -->
+    <section class="section section-muted">
+      <div class="section-header">
+        <p class="eyebrow">Compare</p>
+        <h2>横向对比</h2>
+      </div>
+      <table class="cmp">
+        <thead>
+          <tr><th>维度</th><th>A 现状精修</th><th>B 作品集优先</th><th>C 写作花园</th><th>D 单页</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>结构改动</td><td>小（填内容）</td><td>中（项目升级）</td><td>中（博客重建）</td><td>大（合并单页）</td></tr>
+          <tr><td>内容重点</td><td>均衡</td><td>项目 / 作品</td><td>文章 / 思考</td><td>整体卡片</td></tr>
+          <tr><td>维护成本</td><td>中</td><td>中（需持续更新案例）</td><td>高（需持续写）</td><td>低</td></tr>
+          <tr><td>见效速度</td><td>快</td><td>中</td><td>慢</td><td>快</td></tr>
+          <tr><td>个性表达</td><td>中</td><td>强（作品说话）</td><td>强（观点说话）</td><td>强（可玩性强）</td></tr>
+          <tr><td>当前最缺</td><td>真实内容</td><td>真实项目</td><td>写作习惯</td><td>内容整合</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 建议 -->
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Recommendation</p>
+        <h2>我的建议</h2>
+      </div>
+      <div class="reco">
+        <p><b>短期（现在就能做）</b>：先走 <b>A · 现状精修</b>——结构不动、风险最低，把「通用内容清单」里的 6 项补齐（尤其一句定位、真实项目、Now 板块）。这能最快消除「占位感」，且和已做好的 Clay Cool 视觉完全兼容。</p>
+        <p style="margin-top:10px"><b>若你更想一鼓作气</b>：选 <b>D · 单页</b>，把内容收进一个滚动页 + 新增「Uses」板块，最易做出「真实设计师感」且维护最省心；博客保持独立子页、主站只展示最新几篇即可。</p>
+        <p style="margin-top:10px"><b>B / C</b> 更适合你已有清晰作品或写作节奏后再切换，不必现在决定。</p>
+        <p style="margin-top:10px">你挑中方向后，我可以直接按该方案重写对应页面的内容与结构（仍用现有 Clay Cool 样式），并给出每页的「内容填写模板」。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Lawwaikit. 内容策略预览 · 沿用站点 Clay Cool 视觉</p>
+  </footer>
+</body>
+</html>

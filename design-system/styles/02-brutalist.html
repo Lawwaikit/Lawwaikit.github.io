@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格 02 · 新粗野主义 / Neo-Brutalism</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FDF3DC; --ink:#111111; --acc:#FF4D00; --y:#FFD23F; --c:#FF6B6B; --t:#3DD2C0;
+    --bd:3px solid var(--ink); --sh:6px 6px 0 var(--ink);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk','PingFang SC',sans-serif;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:0 24px}
+  .marquee{background:var(--ink);color:var(--y);font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.15em;padding:9px 0;overflow:hidden;white-space:nowrap}
+  .marquee span{display:inline-block;padding-left:100%;animation:scroll 18s linear infinite}
+  @keyframes scroll{to{transform:translateX(-100%)}}
+  /* NAV */
+  nav{display:flex;justify-content:space-between;align-items:center;border:var(--bd);border-top:none;padding:18px 22px;background:#fff}
+  .brand{font-weight:700;font-size:26px;letter-spacing:-.02em}
+  .nav-links{display:flex;gap:10px;list-style:none}
+  .nav-links a{color:var(--ink);text-decoration:none;font-weight:700;font-size:14px;border:var(--bd);padding:7px 12px;background:var(--y)}
+  .nav-links a.cur{background:var(--acc);color:#fff}
+  /* HERO */
+  .hero{position:relative;padding:70px 22px 60px;border:var(--bd);border-top:none;background:#fff}
+  .sticker{position:absolute;top:22px;right:22px;background:var(--acc);color:#fff;border:var(--bd);box-shadow:var(--sh);font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.1em;padding:8px 12px;transform:rotate(7deg)}
+  .eyebrow{font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+  .hero h1{font-weight:700;font-size:clamp(38px,7vw,76px);line-height:1.02;letter-spacing:-.02em;max-width:16ch}
+  .hero h1 mark{background:var(--t);color:var(--ink);padding:0 .12em;box-decoration-break:clone}
+  .hero .sub{margin-top:24px;max-width:46ch;font-size:17px}
+  .tags{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+  .tags span{border:var(--bd);padding:6px 12px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;background:#fff;transform:rotate(-2deg)}
+  .actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{font-family:'Space Grotesk';font-weight:700;font-size:15px;border:var(--bd);padding:14px 24px;text-decoration:none;color:var(--ink);background:var(--y);box-shadow:var(--sh);transition:transform .12s,box-shadow .12s}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--ink)}
+  .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+  .btn-p{background:var(--acc);color:#fff}
+  /* FEATURES — loud bordered boxes, clashing fills, slight rotations */
+  .features{padding:60px 0}
+  .seclabel{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .feat{border:var(--bd);box-shadow:var(--sh);padding:22px;background:var(--c)}
+  .feat:nth-child(1){transform:rotate(-1.2deg);background:var(--y)}
+  .feat:nth-child(2){transform:rotate(1deg);background:var(--t)}
+  .feat:nth-child(3){transform:rotate(-.4deg);background:var(--c)}
+  .feat .num{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;background:var(--ink);color:#fff;display:inline-block;padding:3px 8px;margin-bottom:14px}
+  .feat h3{font-weight:700;font-size:21px;letter-spacing:-.01em;margin-bottom:8px}
+  .feat p{font-size:14px;line-height:1.55}
+  /* PROJECT */
+  .project{padding:10px 0 70px}
+  .proj{border:var(--bd);box-shadow:var(--sh);background:#fff;padding:26px}
+  .proj .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+  .proj .no{font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.15em;text-transform:uppercase}
+  .proj .status{background:var(--acc);color:#fff;border:var(--bd);font-family:'Space Mono',monospace;font-weight:700;font-size:12px;padding:5px 10px;transform:rotate(-3deg)}
+  .proj h3{font-weight:700;font-size:clamp(26px,4vw,40px);letter-spacing:-.02em;margin-bottom:8px}
+  .proj p{font-size:15px}
+  /* FOOTER */
+  footer{margin-top:30px;background:var(--ink);color:#fff;padding:22px 24px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
+</head>
+<body>
+  <div class="marquee"><span>★ 设计系统 ★ 前端开发 ★ 排版研究 ★ 手工感 ★ 拒绝模板 ★ 设计系统 ★ 前端开发 ★ 排版研究 ★ 手工感 ★ 拒绝模板 ★</span></div>
+  <div class="page">
+    <nav>
+      <div class="brand">LAWWAI.</div>
+      <ul class="nav-links">
+        <li><a class="cur">首页</a></li><li><a>关于</a></li><li><a>项目</a></li><li><a>博客</a></li><li><a>联系</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <div class="sticker">EST. 2026</div>
+      <div class="eyebrow">// 个人站</div>
+      <h1>你好，我是 Lawwai — 做<mark>有手感</mark>的数字产品。</h1>
+      <p class="sub">设计师 / 前端开发者。在规整与随意之间，找属于这个站点的呼吸节奏。</p>
+      <div class="tags"><span>设计系统</span><span>前端</span><span>排版</span></div>
+      <div class="actions">
+        <a class="btn btn-p" href="#">查看项目 →</a>
+        <a class="btn" href="#">读博客</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="seclabel">// 能力</div>
+      <div class="grid">
+        <div class="feat"><span class="num">01</span><h3>设计系统</h3><p>从令牌到组件，建立一致且可扩展的视觉语言。</p></div>
+        <div class="feat"><span class="num">02</span><h3>前端开发</h3><p>手写语义化 HTML / CSS，拒绝千篇一律的模板。</p></div>
+        <div class="feat"><span class="num">03</span><h3>排版研究</h3><p>在中拉丁混排里寻找节奏、张力与留白。</p></div>
+      </div>
+    </section>
+
+    <section class="project">
+      <div class="proj">
+        <div class="row"><span class="no">项目 No.01</span><span class="status">LIVE</span></div>
+        <h3>“纸与墨” 个人站重设计</h3>
+        <p>把一套 AI 默认皮肤，重做成有手感、有温度的编辑风站点。UI · 2026</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 LAWWAI. 用 ❤ 与 CSS 手写。</span>
+      <span>风格 02 — 新粗野主义</span>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "baseTheme": "Paper & Ink",
+    "baseThemeFile": "design-tokens.json",
+    "generatedAt": "2026-07-13",
+    "count": 4,
+    "note": "Each theme re-maps the SAME token structure (color roles, type, spacing, radius, shadow, motion). Apply by swapping the :root / [data-theme] variable blocks in css/style.css."
+  },
+
+  "themes": [
+    {
+      "id": "risograph-pop",
+      "name": "Risograph Pop",
+      "tagline": "网印流行 · 双专色套印的年轻活力",
+      "positioning": "面向作品集 / 个人品牌的活泼方向。借用 risograph 双专色套印的观感——高饱和但不过度，带一点印刷错位的不完美，比当前更外向、更'工作室 zine'。",
+      "fonts": {
+        "display": "'Fraunces', Georgia, serif",
+        "body":    "'Space Grotesk', 'PingFang SC', sans-serif",
+        "mono":    "'Space Mono', monospace",
+        "diff": "正文从 Figtree 换成 Space Grotesk（更有骨架与活力）；标题仍用 Fraunces 衬线制造反差；等宽保留。"
+      },
+      "palette": {
+        "accent":   "#C8326B",
+        "accent-2": "#1F8A80",
+        "paper":    "#FBE9DD",
+        "surface":  "#FFF6EC",
+        "ink":      "#2B2622",
+        "ink-2":    "#8A7A6E",
+        "line":     "#E7C9B4",
+        "soft":     "#F6CBD9"
+      },
+      "spacing": "紧凑 (compact) — 栅格间隙缩到 1rem，区块纵向留白略减，信息更密。",
+      "radius": "锐利 (sharp) — 2–4px 为主，按钮/卡片硬边，强调'印出来'的切口感。",
+      "shadow": "硬偏移阴影 3px 3px 0 ink，hover 升到 5px。",
+      "irregularity": "旋转加大到 ±1.2°，卡片错落更明显，印章序号更跳。",
+      "diffFromCurrent": "主色由锈红 → 洋红，辅色由松绿 → 青；整体更鲜艳、更不规整、更年轻。保留了衬线+等宽的反差结构，但能量更高。"
+    },
+
+    {
+      "id": "brutalist-mono",
+      "name": "Brutalist Mono",
+      "tagline": "粗野等宽 · 黑白强对比 + 单色高亮",
+      "positioning": "极简、技术、编辑器美学。去掉一切圆角与衬线，纯黑白骨架 + 单一高亮色，硬阴影，强调结构本身而非装饰。适合工程向 / 极客个人站。",
+      "fonts": {
+        "display": "'Space Grotesk', 'Helvetica Neue', sans-serif",
+        "body":    "'Space Grotesk', 'PingFang SC', sans-serif",
+        "mono":    "'JetBrains Mono', 'Space Mono', monospace",
+        "diff": "完全移除 Fraunces 衬线；标题与正文统一用 Space Grotesk（新怪诞），标签/数据用 JetBrains Mono。最'硬'、最技术。"
+      },
+      "palette": {
+        "accent":   "#FF4D00",
+        "accent-2": "#0A0A0A",
+        "paper":    "#F4F2EC",
+        "surface":  "#FFFFFF",
+        "ink":      "#0A0A0A",
+        "ink-2":    "#5A5A55",
+        "line":     "#0A0A0A",
+        "soft":     "#EDEAE0"
+      },
+      "spacing": "紧凑且严格 (compact & strict) — 栅格对齐但不对称偏移，间距规整。",
+      "radius": "直角 (square) — 0px，所有元素方切，无圆角。",
+      "shadow": "硬偏移阴影 4px 4px 0 ink，无模糊。",
+      "irregularity": "几乎无旋转；通过'故意错位'的网格与粗边框制造张力，而非倾斜。",
+      "diffFromCurrent": "彻底去掉圆角与衬线，转为黑白 + 单一高亮（橙红）。最克制、最技术、最'编辑器'。与当前的暖色印刷感形成两极对照。"
+    },
+
+    {
+      "id": "quiet-luxury",
+      "name": "Quiet Luxury",
+      "tagline": "静奢柔编辑 · 杂志内页的克制留白",
+      "positioning": "高级、安静、杂志内页气质。柔和大地色，衬线主导，宽松留白，几乎无装饰。从当前的'印刷硬边'转向'杂志软边'，适合内容/写作者品牌。",
+      "fonts": {
+        "display": "'Fraunces', 'Noto Serif SC', Georgia, serif",
+        "body":    "'Newsreader', 'Source Serif 4', Georgia, serif",
+        "mono":    "'Space Mono', monospace",
+        "diff": "正文从无衬线 Figtree 换成衬线 Newsreader，形成'全衬线'编辑感；等宽仅用于极少量标签。"
+      },
+      "palette": {
+        "accent":   "#A6634C",
+        "accent-2": "#7E8B6B",
+        "paper":    "#F6F3EC",
+        "surface":  "#FFFFFF",
+        "ink":      "#2A2723",
+        "ink-2":    "#7A7268",
+        "line":     "#E3DDD2",
+        "soft":     "#EFE7DC"
+      },
+      "spacing": "宽松 (loose) — 区块纵向留白加到 6rem，栅格间隙 2rem，呼吸感强。",
+      "radius": "圆润 (soft) — 8–12px，边角柔和。",
+      "shadow": "细发丝边框 (1px hairline) + 极淡柔影 0 2px 8px rgba(0,0,0,0.05)，刻意轻。",
+      "irregularity": "无旋转、无错位；靠大留白与细线分隔，秩序感来自节制而非装饰。",
+      "diffFromCurrent": "从'硬边印刷'转向'软边杂志'：全衬线、留白更大、圆角更柔、几乎无旋转与硬阴影。更安静、更高级，但去掉了当前最具识别度的 risograph 硬边。"
+    },
+
+    {
+      "id": "terminus-dark",
+      "name": "Terminus Dark",
+      "tagline": "终端暗色 · 温暖近黑底 + 琥珀高亮",
+      "positioning": "暗色原生（非'反色'）的开发者 / 极客方向。温暖近黑底 + 奶白字 + 琥珀金高亮，等宽技术味偏重，中等圆角。适合技术博客 / 工具型站点。",
+      "fonts": {
+        "display": "'Space Grotesk', 'PingFang SC', sans-serif",
+        "body":    "'JetBrains Mono', 'Space Mono', monospace",
+        "mono":    "'JetBrains Mono', monospace",
+        "diff": "标题换 Space Grotesk、正文直接上 JetBrains Mono（更'终端'）；等宽权重明显加重。"
+      },
+      "palette": {
+        "accent":   "#E0A33E",
+        "accent-2": "#5FB6A8",
+        "paper":    "#12100E",
+        "surface":  "#1C1916",
+        "ink":      "#EDE4D6",
+        "ink-2":    "#B8AC99",
+        "line":     "#3A332B",
+        "soft":     "#2C2620"
+      },
+      "spacing": "中等 (medium) — 介于紧凑与宽松之间，保持暗色下的可读密度。",
+      "radius": "中等 (medium) — 6–8px，圆角不夸张。",
+      "shadow": "硬偏移阴影用奶白 ink-shadow，在暗底上形成清脆的'浮起'边。",
+      "irregularity": "轻微旋转 0.3°，比当前克制；靠暖色温感与等宽栅格建立秩序。",
+      "diffFromCurrent": "暗色原生（不是当前浅色的反色版本）；主色由锈红 → 琥珀金，辅色由松绿 → 青；等宽技术味更重、圆角中等。是'换一种光'而非'换一种色'。"
+    }
+  ]
+}

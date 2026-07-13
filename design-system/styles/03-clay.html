@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格 03 · 有机柔感 / Clay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF5EF; --ink:#3D3A36; --mut:#8A8378; --acc:#E8916B; --acc2:#8FB39B;
+    --surface:#FFFFFF; --soft:#F3E7DD; --r:30px; --r-sm:18px;
+    --shadow:0 14px 30px rgba(180,140,110,.18), 0 4px 10px rgba(180,140,110,.12);
+    --shadow-inset:inset 0 2px 4px rgba(255,255,255,.7), inset 0 -3px 6px rgba(180,140,110,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Nunito','PingFang SC',sans-serif;line-height:1.6;overflow-x:hidden}
+  .page{max-width:1060px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+  /* soft background blobs */
+  .blob{position:fixed;border-radius:50%;filter:blur(8px);opacity:.5;z-index:1}
+  .b1{width:340px;height:340px;background:#F6D9C4;top:-80px;right:-60px}
+  .b2{width:260px;height:260px;background:#CFE3D4;bottom:60px;left:-70px}
+  /* NAV */
+  nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px;background:var(--surface);border-radius:999px;padding:14px 26px;box-shadow:var(--shadow)}
+  .brand{font-family:'Quicksand';font-weight:700;font-size:22px;color:var(--acc)}
+  .nav-links{display:flex;gap:8px;list-style:none}
+  .nav-links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;padding:8px 16px;border-radius:999px}
+  .nav-links a.cur{background:var(--soft);color:var(--acc)}
+  .nav-links a:hover{background:var(--acc);color:#fff}
+  /* HERO */
+  .hero{text-align:center;padding:84px 0 60px}
+  .eyebrow{display:inline-block;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--acc);background:var(--soft);padding:7px 16px;border-radius:999px;margin-bottom:24px}
+  .hero h1{font-family:'Quicksand';font-weight:700;font-size:clamp(34px,6vw,62px);line-height:1.12;letter-spacing:-.01em;max-width:18ch;margin:0 auto}
+  .hero h1 em{color:var(--acc);font-style:normal}
+  .hero .sub{margin:24px auto 0;max-width:42ch;color:var(--mut);font-size:17px}
+  .tags{margin-top:24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .tags span{background:var(--surface);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--mut);box-shadow:var(--shadow)}
+  .actions{margin-top:34px;display:flex;gap:14px;justify-content:center}
+  .btn{font-family:'Quicksand';font-weight:700;font-size:15px;padding:15px 30px;text-decoration:none;border-radius:999px;transition:transform .15s,box-shadow .15s}
+  .btn-p{background:var(--acc);color:#fff;box-shadow:var(--shadow)}
+  .btn-p:hover{transform:translateY(-3px)}
+  .btn-s{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+  .btn-s:hover{transform:translateY(-3px)}
+  /* FEATURES — floating rounded clay cards */
+  .features{padding:50px 0}
+  .seclabel{text-align:center;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;color:var(--mut);margin-bottom:28px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .feat{background:var(--surface);border-radius:var(--r);padding:28px 24px;box-shadow:var(--shadow);transition:transform .2s}
+  .feat:hover{transform:translateY(-6px)}
+  .feat .ic{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-family:'Quicksand';font-weight:700;font-size:20px;color:#fff;margin-bottom:16px;box-shadow:var(--shadow-inset)}
+  .feat:nth-child(1) .ic{background:var(--acc)}
+  .feat:nth-child(2) .ic{background:var(--acc2)}
+  .feat:nth-child(3) .ic{background:#D9A85C}
+  .feat h3{font-family:'Quicksand';font-weight:700;font-size:20px;margin-bottom:8px}
+  .feat p{color:var(--mut);font-size:14px}
+  /* PROJECT */
+  .project{padding:20px 0 70px}
+  .proj{background:var(--surface);border-radius:var(--r);padding:34px;box-shadow:var(--shadow)}
+  .proj .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+  .proj .no{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--mut)}
+  .proj .status{background:var(--acc2);color:#fff;font-weight:700;font-size:12px;padding:6px 14px;border-radius:999px}
+  .proj h3{font-family:'Quicksand';font-weight:700;font-size:clamp(24px,4vw,36px);margin-bottom:8px}
+  .proj p{color:var(--mut);font-size:15px}
+  /* FOOTER */
+  footer{margin:30px 0 40px;text-align:center;color:var(--mut);font-size:13px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="page">
+    <nav>
+      <div class="brand">lawwai.</div>
+      <ul class="nav-links">
+        <li><a class="cur">首页</a></li><li><a>关于</a></li><li><a>项目</a></li><li><a>博客</a></li><li><a>联系</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <span class="eyebrow">EST. 2026 · 个人站</span>
+      <h1>你好，我是 Lawwai — 做<em>有手感</em>的数字产品。</h1>
+      <p class="sub">设计师 / 前端开发者。在规整与随意之间，寻找属于这个站点的呼吸节奏。</p>
+      <div class="tags"><span>设计系统</span><span>前端开发</span><span>排版研究</span></div>
+      <div class="actions">
+        <a class="btn btn-p" href="#">查看项目</a>
+        <a class="btn btn-s" href="#">读博客</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="seclabel">// 能力</div>
+      <div class="grid">
+        <div class="feat"><div class="ic">◆</div><h3>设计系统</h3><p>从令牌到组件，建立一致且可扩展的视觉语言。</p></div>
+        <div class="feat"><div class="ic">✦</div><h3>前端开发</h3><p>手写语义化 HTML / CSS，拒绝千篇一律的模板。</p></div>
+        <div class="feat"><div class="ic">❉</div><h3>排版研究</h3><p>在中拉丁混排里寻找节奏、张力与留白。</p></div>
+      </div>
+    </section>
+
+    <section class="project">
+      <div class="proj">
+        <div class="row"><span class="no">项目 No.01</span><span class="status">LIVE</span></div>
+        <h3>“纸与墨” 个人站重设计</h3>
+        <p>把一套 AI 默认皮肤，重做成有手感、有温度的编辑风站点。UI · 2026</p>
+      </div>
+    </section>
+
+    <footer>© 2026 Lawwai. 用 ❤ 与 CSS 手写。</footer>
+  </div>
+</body>
+</html>

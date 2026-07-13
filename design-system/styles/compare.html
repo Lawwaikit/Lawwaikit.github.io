@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格对比 · 4 套视觉方向</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0f0f12;color:#ECE4D6;font-family:'JetBrains Mono',monospace;line-height:1.6}
+  .top{max-width:1000px;margin:0 auto;padding:48px 24px 12px}
+  .top .k{color:#E0A33E;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+  .top h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(26px,5vw,42px);letter-spacing:-.02em;margin:10px 0 8px}
+  .top p{color:#9A917F;font-size:14px;max-width:60ch}
+  .sec{max-width:1000px;margin:0 auto;padding:28px 24px}
+  .card{border:1px solid #2a2720;border-radius:14px;overflow:hidden;background:#16140f}
+  .head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;padding:20px 22px;border-bottom:1px solid #2a2720}
+  .head .name{font-family:'Space Grotesk';font-weight:700;font-size:22px}
+  .head .name b{color:#E0A33E}
+  .head .tag{color:#5FB6A8;font-size:12px;letter-spacing:.08em}
+  .head .open{color:#ECE4D6;border:1px solid #2a2720;padding:7px 13px;font-size:12px;text-decoration:none}
+  .head .open:hover{border-color:#E0A33E;color:#E0A33E}
+  .traits{display:flex;flex-wrap:wrap;gap:8px;padding:16px 22px;border-bottom:1px solid #2a2720}
+  .traits span{font-size:11px;color:#9A917F;border:1px solid #2a2720;border-radius:999px;padding:4px 10px}
+  .frame{position:relative}
+  .frame iframe{width:100%;height:720px;border:0;display:block;background:#fff}
+  .hint{color:#9A917F;font-size:12px;padding:10px 22px 18px}
+  @media(max-width:640px){.frame iframe{height:880px}}
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="k">Style comparison · 4 directions</div>
+    <h1>四种截然不同的视觉风格</h1>
+    <p>同一套站点内容（导航 / Hero / 能力 / 项目 / 页脚），四种完全不同的设计语言。下方逐一展示，点击右上角可在新标签打开完整页面。</p>
+  </div>
+
+  <div class="sec">
+    <div class="card">
+      <div class="head">
+        <div><div class="name"><b>01</b> · 国际主义 Swiss</div><div class="tag">冷峻 · 结构 · 克制</div></div>
+        <a class="open" href="01-swiss.html" target="_blank">打开 ↗</a>
+      </div>
+      <div class="traits"><span>纯白底 + 单一瑞士红</span><span>Inter 无衬线</span><span>12栏网格 / 左对齐</span><span>发丝分隔线，无卡片框</span><span>无圆角无阴影</span><span>大留白 + 编号 01/02/03</span></div>
+      <div class="frame"><iframe src="01-swiss.html"></iframe></div>
+      <div class="hint">特点：把装饰全部抽掉，靠网格、对齐、负空间和一根红规则建立秩序。最理性、最"瑞士平面"的一版。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="card">
+      <div class="head">
+        <div><div class="name"><b>02</b> · 新粗野主义 Neo-Brutalism</div><div class="tag"> raw · 高对比 · 能量</div></div>
+        <a class="open" href="02-brutalist.html" target="_blank">打开 ↗</a>
+      </div>
+      <div class="traits"><span>米黄底 + 黑粗边 3px</span><span>硬偏移阴影 6px</span><span>撞色填充（黄/珊瑚/青）</span><span>旋转贴纸 / 跑马灯</span><span>0 圆角，方切</span><span>Space Grotesk + 等宽</span></div>
+      <div class="frame"><iframe src="02-brutalist.html"></iframe></div>
+      <div class="hint">特点：故意"未加工"——粗黑边框、生硬投影、跳动的撞色与贴纸。和之前所有克制风完全相反，最吵、最有态度。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="card">
+      <div class="head">
+        <div><div class="name"><b>03</b> · 有机柔感 Clay</div><div class="tag">柔软 · 圆润 · 亲和</div></div>
+        <a class="open" href="03-clay.html" target="_blank">打开 ↗</a>
+      </div>
+      <div class="traits"><span>暖奶油底 + 陶土/鼠尾草</span><span>全圆角 30px+</span><span>黏土柔影（多层软阴影）</span><span>背景柔和色块 blob</span><span>Quicksand / Nunito 圆体</span><span>居中流动布局</span></div>
+      <div class="frame"><iframe src="03-clay.html"></iframe></div>
+      <div class="hint">特点：一切都是圆的、软的、漂浮的。友好、治愈、产品感强。和硬边编辑风（当前基准）气质相反。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="card">
+      <div class="head">
+        <div><div class="name"><b>04</b> · 终端暗色 Terminal</div><div class="tag">暗色 · 等宽 · 极客</div></div>
+        <a class="open" href="04-terminal.html" target="_blank">打开 ↗</a>
+      </div>
+      <div class="traits"><span>近黑暖底 + 琥珀/青</span><span>等宽 JetBrains Mono</span><span>网格点阵背景</span><span>终端面板 + $ / > 提示符</span><span>细线边框 + 顶边高亮</span><span>Space Grotesk 标题</span></div>
+      <div class="frame"><iframe src="04-terminal.html"></iframe></div>
+      <div class="hint">特点：开发者/终端美学，暗色原生（非反色）。等宽字重、网格背景、命令行意象，技术气质最浓。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="card">
+      <div class="head">
+        <div><div class="name"><b>05</b> · 冷调克制 Clay（03 改造）</div><div class="tag">冷灰蓝 · 收紧圆角 · 同结构</div></div>
+        <a class="open" href="05-clay-cool.html" target="_blank">打开 ↗</a>
+      </div>
+      <div class="traits"><span>冷浅灰蓝底 #F1F4F8</span><span>钢蓝主色 #3E6EA8</span><span>雾青辅色 #5E94A8</span><span>大面圆角 30→14px</span><span>按钮/导航 999→12/16px</span><span>阴影冷色 tint，形状不变</span></div>
+      <div class="frame"><iframe src="05-clay-cool.html"></iframe></div>
+      <div class="hint">特点：保留 03 的全部布局/结构/字体/层次与对比，只做两件事——把圆角收紧（大面 14px、按钮 12px），把暖色换成冷灰蓝中性色系。比 03 更冷静、克制、专业，但仍比 01/02 柔和。</div>
+    </div>
+  </div>
+
+  <div class="sec" style="padding-top:0;color:#9A917F;font-size:12px">
+    基准 "Paper &amp; Ink"（暖色编辑风）已存档于 design-system/archive/2026-07-13-paper-and-ink/ 。选定某套后，可将其令牌替换进 css/style.css 落地全站。
+  </div>
+</body>
+</html>

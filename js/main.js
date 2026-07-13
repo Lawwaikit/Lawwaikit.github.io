@@ -234,8 +234,9 @@ function setActiveNav() {
   });
 }
 
-const savedTheme = localStorage.getItem('theme') || 'light';
-const savedLang = localStorage.getItem('lang') || 'zh';
+// 暂去掉中英切换与夜间模式按钮，默认中文 + 日间，便于专注内容（后续可恢复）
+const savedTheme = 'light';
+const savedLang = 'zh';
 applyTheme(savedTheme);
 applyLanguage(savedLang);
 setActiveNav();

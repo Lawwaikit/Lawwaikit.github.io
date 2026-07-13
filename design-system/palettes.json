@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "generated": "2026-07-13",
+    "source": "design-system/styles/06-palettes.html",
+    "note": "8 套配色方案（暖/冷各 4），圆角与视觉结构锁定为 05 设定（大面14/按钮12/导航16/导航链接10/图标12，微芯片药丸）。每个方案含完整令牌，可随时替换 :root 变量切换。",
+    "shared": {
+      "radius": { "surface": "14px", "button": "12px", "nav": "16px", "navLink": "10px", "icon": "12px", "chip": "999px" },
+      "surface": "#FFFFFF",
+      "shadowShape": "0 14px 30px var(--sh1), 0 4px 10px var(--sh2)"
+    }
+  },
+  "palettes": [
+    {
+      "id": "W1", "name": "Terracotta & Sage", "nameZh": "陶土 + 鼠尾草", "family": "warm",
+      "tokens": {
+        "bg": "#FBF4EC", "ink": "#3A332C", "mut": "#927F6E",
+        "acc": "#C8653B", "acc2": "#7E9B82", "soft": "#F1E6D9",
+        "surface": "#FFFFFF", "blob1": "#F4D8C4", "blob2": "#D7E6D9", "ic3": "#D9A05C"
+      },
+      "shadow": { "sh1": "rgba(150,110,80,.16)", "sh2": "rgba(150,110,80,.10)" }
+    },
+    {
+      "id": "W2", "name": "Amber & Plum", "nameZh": "琥珀 + 梅紫", "family": "warm",
+      "tokens": {
+        "bg": "#FAF1E6", "ink": "#36291F", "mut": "#8A6F5C",
+        "acc": "#B5652E", "acc2": "#8E5A6B", "soft": "#F2E3D2",
+        "surface": "#FFFFFF", "blob1": "#F3DCC2", "blob2": "#E3CFD6", "ic3": "#C98A3E"
+      },
+      "shadow": { "sh1": "rgba(150,100,70,.16)", "sh2": "rgba(150,100,70,.10)" }
+    },
+    {
+      "id": "W3", "name": "Clay Rose & Olive", "nameZh": "陶玫 + 橄榄", "family": "warm",
+      "tokens": {
+        "bg": "#F8F1EC", "ink": "#3B332E", "mut": "#8C7C70",
+        "acc": "#C56B5E", "acc2": "#8A8C5A", "soft": "#EFE4DA",
+        "surface": "#FFFFFF", "blob1": "#F2D9D2", "blob2": "#DEE0C8", "ic3": "#C98A6A"
+      },
+      "shadow": { "sh1": "rgba(150,110,95,.16)", "sh2": "rgba(150,110,95,.10)" }
+    },
+    {
+      "id": "W4", "name": "Honey & Teal", "nameZh": "蜜黄 + 青", "family": "warm",
+      "tokens": {
+        "bg": "#FBF5E9", "ink": "#3A3327", "mut": "#8E8068",
+        "acc": "#D9952E", "acc2": "#4E8C8C", "soft": "#F3E8D4",
+        "surface": "#FFFFFF", "blob1": "#F6E0B8", "blob2": "#CFE4E2", "ic3": "#C77F3C"
+      },
+      "shadow": { "sh1": "rgba(160,120,70,.16)", "sh2": "rgba(160,120,70,.10)" }
+    },
+    {
+      "id": "C1", "name": "Steel & Mist", "nameZh": "钢蓝 + 雾青（当前05）", "family": "cool",
+      "tokens": {
+        "bg": "#F1F4F8", "ink": "#2B3038", "mut": "#7C8493",
+        "acc": "#3E6EA8", "acc2": "#5E94A8", "soft": "#E8EEF4",
+        "surface": "#FFFFFF", "blob1": "#D3E1EE", "blob2": "#DCE7EC", "ic3": "#7A8FB5"
+      },
+      "shadow": { "sh1": "rgba(70,95,130,.16)", "sh2": "rgba(70,95,130,.10)" }
+    },
+    {
+      "id": "C2", "name": "Indigo & Periwinkle", "nameZh": "靛蓝 + 长春花", "family": "cool",
+      "tokens": {
+        "bg": "#F0F1F6", "ink": "#2A2C36", "mut": "#767E92",
+        "acc": "#4A4E9C", "acc2": "#7C84C4", "soft": "#E7E9F2",
+        "surface": "#FFFFFF", "blob1": "#D6D8EE", "blob2": "#DEE0F0", "ic3": "#6A6FB0"
+      },
+      "shadow": { "sh1": "rgba(70,75,130,.16)", "sh2": "rgba(70,75,130,.10)" }
+    },
+    {
+      "id": "C3", "name": "Teal & Slate", "nameZh": "青碧 + 板岩", "family": "cool",
+      "tokens": {
+        "bg": "#EEF3F2", "ink": "#283230", "mut": "#6E847E",
+        "acc": "#2E8B86", "acc2": "#5C7C84", "soft": "#E2EBE9",
+        "surface": "#FFFFFF", "blob1": "#CFE6E2", "blob2": "#D7E2E4", "ic3": "#4E8C8C"
+      },
+      "shadow": { "sh1": "rgba(55,110,105,.16)", "sh2": "rgba(55,110,105,.10)" }
+    },
+    {
+      "id": "C4", "name": "Graphite & Ice", "nameZh": "石墨 + 冰蓝", "family": "cool",
+      "tokens": {
+        "bg": "#F2F3F5", "ink": "#2B2E33", "mut": "#7A8089",
+        "acc": "#5B7C9A", "acc2": "#8A97A3", "soft": "#E9ECEF",
+        "surface": "#FFFFFF", "blob1": "#DCE3EA", "blob2": "#E2E6EA", "ic3": "#6E8499"
+      },
+      "shadow": { "sh1": "rgba(70,85,105,.16)", "sh2": "rgba(70,85,105,.10)" }
+    }
+  ]
+}

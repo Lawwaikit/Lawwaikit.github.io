@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格 04 · 终端暗色 / Terminal Mono</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E0D0B; --panel:#17150F; --ink:#ECE4D6; --mut:#9A917F; --line:#2C2820;
+    --acc:#E0A33E; --acc2:#5FB6A8; --grid:rgba(224,163,62,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'JetBrains Mono','PingFang SC',monospace;font-size:15px;line-height:1.6;
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:32px 32px;
+  }
+  .page{max-width:1040px;margin:0 auto;padding:0 24px}
+  /* NAV */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+  .brand{font-family:'Space Grotesk';font-weight:700;font-size:20px;color:var(--acc)}
+  .brand::before{content:"▮ ";color:var(--acc2)}
+  .nav-links{display:flex;gap:6px;list-style:none}
+  .nav-links a{color:var(--mut);text-decoration:none;font-size:13px;padding:6px 12px;border:1px solid transparent}
+  .nav-links a.cur{color:var(--acc);border-color:var(--line);background:var(--panel)}
+  .nav-links a:hover{color:var(--ink)}
+  /* HERO */
+  .hero{padding:80px 0 64px}
+  .eyebrow{color:var(--acc2);font-size:12px;letter-spacing:.12em;margin-bottom:22px}
+  .eyebrow::before{content:"$ ";color:var(--acc)}
+  .hero h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(34px,6vw,66px);line-height:1.08;letter-spacing:-.02em;max-width:18ch}
+  .hero h1 .hl{color:var(--acc)}
+  .hero .sub{margin-top:24px;max-width:48ch;color:var(--mut);font-size:15px}
+  .tags{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+  .tags span{border:1px solid var(--line);padding:6px 12px;font-size:12px;color:var(--mut)}
+  .actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{font-family:'JetBrains Mono';font-weight:700;font-size:14px;padding:13px 22px;text-decoration:none;border:1px solid var(--acc);transition:.15s}
+  .btn-p{background:var(--acc);color:#0E0D0B}
+  .btn-p:hover{box-shadow:0 0 0 3px rgba(224,163,62,.25)}
+  .btn-s{color:var(--ink);border-color:var(--line)}
+  .btn-s:hover{border-color:var(--acc);color:var(--acc)}
+  /* FEATURES — terminal panels */
+  .features{padding:50px 0}
+  .seclabel{color:var(--acc2);font-size:12px;letter-spacing:.14em;margin-bottom:22px}
+  .seclabel::before{content:"> ";}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .feat{border:1px solid var(--line);background:var(--panel);padding:22px;position:relative}
+  .feat::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+  .feat:hover::before{transform:scaleX(1)}
+  .feat .num{color:var(--acc);font-size:12px;margin-bottom:12px}
+  .feat h3{font-family:'Space Grotesk';font-weight:700;font-size:19px;margin-bottom:8px}
+  .feat p{color:var(--mut);font-size:13px;line-height:1.55}
+  /* PROJECT */
+  .project{padding:10px 0 70px}
+  .proj{border:1px solid var(--line);background:var(--panel);padding:28px}
+  .proj .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+  .proj .no{color:var(--acc2);font-size:12px;letter-spacing:.1em}
+  .proj .status{color:var(--acc);border:1px solid var(--acc);font-size:12px;padding:4px 10px}
+  .proj h3{font-family:'Space Grotesk';font-weight:700;font-size:clamp(24px,4vw,38px);margin-bottom:8px}
+  .proj p{color:var(--mut);font-size:14px}
+  /* FOOTER */
+  footer{margin-top:30px;border-top:1px solid var(--line);padding:24px 0;color:var(--mut);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <div class="brand">lawwai</div>
+      <ul class="nav-links">
+        <li><a class="cur">首页</a></li><li><a>关于</a></li><li><a>项目</a></li><li><a>博客</a></li><li><a>联系</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <div class="eyebrow">EST. 2026 · 个人站</div>
+      <h1>你好，我是 Lawwai —<br>做<span class="hl">有手感</span>的数字产品。</h1>
+      <p class="sub">设计师 / 前端开发者。在规整与随意之间，寻找属于这个站点的呼吸节奏。</p>
+      <div class="tags"><span>设计系统</span><span>前端开发</span><span>排版研究</span></div>
+      <div class="actions">
+        <a class="btn btn-p" href="#">查看项目</a>
+        <a class="btn btn-s" href="#">读博客</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="seclabel">// 能力</div>
+      <div class="grid">
+        <div class="feat"><div class="num">01</div><h3>设计系统</h3><p>从令牌到组件，建立一致且可扩展的视觉语言。</p></div>
+        <div class="feat"><div class="num">02</div><h3>前端开发</h3><p>手写语义化 HTML / CSS，拒绝千篇一律的模板。</p></div>
+        <div class="feat"><div class="num">03</div><h3>排版研究</h3><p>在中拉丁混排里寻找节奏、张力与留白。</p></div>
+      </div>
+    </section>
+
+    <section class="project">
+      <div class="proj">
+        <div class="row"><span class="no">项目 No.01</span><span class="status">LIVE</span></div>
+        <h3>“纸与墨” 个人站重设计</h3>
+        <p>把一套 AI 默认皮肤，重做成有手感、有温度的编辑风站点。UI · 2026</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Lawwai. 用 ❤ 与 CSS 手写。</span>
+      <span>风格 04 — 终端暗色</span>
+    </footer>
+  </div>
+</body>
+</html>

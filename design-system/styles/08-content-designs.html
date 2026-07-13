@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>内容架构方案 · 预览</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&family=DM+Mono:wght@400;500&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF3F2; --ink:#283230; --mut:#6E847E; --acc:#2E8B86; --acc2:#5C7C84;
+    --soft:#E2EBE9; --surface:#F8FBFA; --line:#D2E1DD; --acc-soft:#DCEAE8; --card:#FFFFFF;
+    --shadow:0 8px 22px rgba(70,110,120,0.12);
+    --font-d:'Quicksand',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+    --font-b:'Nunito',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+    --font-m:'DM Mono',ui-monospace,'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-b);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:40px 22px 80px}
+  .topbar{font-family:var(--font-m);font-size:12px;color:var(--acc2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+  h1{font-family:var(--font-d);font-weight:700;font-size:clamp(26px,4vw,40px);margin:0 0 6px;letter-spacing:-.01em}
+  .lede{color:var(--mut);max-width:60ch;margin:0 0 30px;font-size:15px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);margin-bottom:26px}
+  .panel h2{font-family:var(--font-d);font-weight:700;font-size:20px;margin:0 0 4px}
+  .panel .sub{color:var(--mut);font-size:13px;margin:0 0 16px}
+  .kicker{font-family:var(--font-m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2)}
+
+  /* audit chips */
+  .audit{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .achip{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12.5px;color:var(--ink)}
+  .achip b{color:var(--acc);font-family:var(--font-m)}
+  .warn{background:#FBF1EC;border-color:#EBC9B8;color:#9A4B2C}
+
+  /* scheme layout */
+  .scheme{display:grid;grid-template-columns:minmax(280px,1fr) minmax(300px,1fr);gap:22px;align-items:start;
+    background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);margin-bottom:24px}
+  .scheme.featured{border:2px solid var(--acc)}
+  .scheme .meta h3{font-family:var(--font-d);font-weight:700;font-size:19px;margin:0 0 2px}
+  .scheme .meta .tag{display:inline-block;font-family:var(--font-m);font-size:10.5px;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:2px 9px;margin-bottom:10px;letter-spacing:.04em}
+  .scheme .meta p{font-size:13px;color:var(--mut);margin:8px 0}
+  .scheme .meta ul{margin:8px 0 0;padding-left:16px;font-size:13px;color:var(--ink)}
+  .scheme .meta li{margin:4px 0}
+  .scheme .meta .fit{margin-top:12px;padding:10px 12px;background:var(--soft);border-radius:10px;font-size:12.5px;color:var(--ink)}
+  .scheme .meta .fit b{color:var(--acc)}
+
+  /* ===== rendered mockup (Clay Cool look) ===== */
+  .mk{background:var(--bg);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13px}
+  .mk-hero{background:var(--soft);padding:16px 18px}
+  .mk-k{font-family:var(--font-m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2);margin-bottom:6px}
+  .mk-h{font-family:var(--font-d);font-weight:700;font-size:18px;line-height:1.15;margin:0 0 6px;color:var(--ink)}
+  .mk-sub{font-size:12px;color:var(--mut);margin:0 0 10px}
+  .mk-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .mk-tag{font-family:var(--font-m);font-size:10px;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:2px 8px}
+  .mk-btns{display:flex;gap:7px;margin-top:11px}
+  .mk-btn{font-family:var(--font-d);font-weight:600;font-size:11.5px;border-radius:10px;padding:5px 11px;border:1px solid var(--acc);background:var(--acc);color:#fff}
+  .mk-btn.ghost{background:transparent;color:var(--acc)}
+  .mk-sec{padding:13px 18px;border-top:1px solid var(--line)}
+  .mk-sl{font-family:var(--font-m);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2);margin-bottom:3px}
+  .mk-st{font-family:var(--font-d);font-weight:700;font-size:14px;margin:0 0 9px;color:var(--ink)}
+  .mk-g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .mk-g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .mk-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 11px}
+  .mk-ct{font-family:var(--font-d);font-weight:600;font-size:12.5px;color:var(--ink);margin-bottom:3px}
+  .mk-cb{font-size:11px;color:var(--mut);line-height:1.45}
+  .mk-cb b{color:var(--acc);font-weight:700}
+  .mk-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line);font-size:11.5px}
+  .mk-row:last-child{border-bottom:0}
+  .mk-row .d{font-family:var(--font-m);font-size:10px;color:var(--acc2)}
+  .mk-now{background:var(--acc-soft);border-radius:12px;padding:11px 13px;margin-top:4px}
+  .mk-now .lab{font-family:var(--font-m);font-size:9.5px;letter-spacing:.12em;color:var(--acc);text-transform:uppercase;margin-bottom:4px}
+  .mk-now p{margin:0;font-size:11.5px;color:var(--ink)}
+  .mk-cloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+  .mk-cloud span{font-family:var(--font-m);font-size:10px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--ink)}
+  .mk-foot{padding:11px 18px;border-top:1px solid var(--line);font-family:var(--font-m);font-size:10px;color:var(--mut)}
+
+  /* comparison table */
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:4px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--font-d);font-weight:700;color:var(--ink);background:var(--soft);font-size:12px}
+  td:first-child{font-family:var(--font-m);color:var(--acc2);font-size:11px}
+  tr:last-child td{border-bottom:0}
+
+  .rec{background:linear-gradient(180deg,var(--acc-soft),transparent);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+  .rec h2{font-family:var(--font-d);margin:0 0 8px;font-size:19px}
+  .rec p{font-size:13.5px;color:var(--ink);margin:6px 0}
+  .rec b{color:var(--acc)}
+  .note{font-size:12px;color:var(--mut);margin-top:18px;font-family:var(--font-m)}
+  @media(max-width:760px){.scheme{grid-template-columns:1fr}.mk-g3{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">Content Architecture · Preview</div>
+  <h1>个人站内容架构方案</h1>
+  <p class="lede">基于现有 Clay Cool（C3 青碧+板岩）视觉风格，给出 4 套不同的「内容组织方式」预览。配色、圆角、字体与现有站点一致，仅调整<strong>展示什么、怎么组织</strong>。每套都填入了<strong>真实感样例文案</strong>（非占位），方便你直接感受成品效果。</p>
+
+  <!-- ===== AUDIT ===== -->
+  <div class="panel">
+    <h2>现状速览：现在有什么 / 缺什么</h2>
+    <p class="sub">盘点当前 5 个页面的真实内容饱和度。</p>
+    <div class="audit">
+      <div class="achip"><b>首页</b> Hero + 3 方向卡 + 2 项目卡 + 2 文章（1 真实 / 1 草稿）</div>
+      <div class="achip"><b>关于</b> 简介 + 4 技能 + 3 时间线（全占位）</div>
+      <div class="achip"><b>项目</b> 3 张卡片（1 真实 / 2 占位）</div>
+      <div class="achip"><b>联系</b> 3 渠道（仅 GitHub 真实）</div>
+      <div class="achip warn"><b>博客</b> 已清空为空白页</div>
+    </div>
+    <div class="audit" style="margin-top:12px">
+      <div class="achip warn">短板 1 · 内容单薄：除本站与 1 篇介绍文，几乎全是「待补充 / 建设中」</div>
+      <div class="achip warn">短板 2 · 身份模糊：Hero 写「产品思维/AI/写作」，技能却写「测试/后端/AI/写作」，自相矛盾</div>
+      <div class="achip warn">短板 3 · 展示无重点：首页像模板，每个板块都薄，看不出你最强的是什么</div>
+    </div>
+  </div>
+
+  <!-- ===== SCHEME A ===== -->
+  <div class="scheme">
+    <div class="mk">
+      <div class="mk-hero">
+        <div class="mk-k">Lawwaikit · QA &amp; AI Tools</div>
+        <div class="mk-h">把质量保障与 AI 工作流，做成可复用的小工具</div>
+        <div class="mk-sub">测试开发 / 自动化 / AI 辅助工程</div>
+        <div class="mk-tags"><span class="mk-tag">测试自动化</span><span class="mk-tag">AI 工具</span><span class="mk-tag">技术写作</span></div>
+        <div class="mk-btns"><span class="mk-btn">看项目</span><span class="mk-btn ghost">读文章</span></div>
+      </div>
+      <div class="mk-sec">
+        <div class="mk-sl">Selected Work</div>
+        <div class="mk-st">精选项目</div>
+        <div class="mk-card" style="margin-bottom:8px">
+          <div class="mk-ct">自动化回归平台</div>
+          <div class="mk-cb"><b>问题</b> 回归耗时 2h · <b>做法</b> pytest+并联 CI · <b>结果</b> 缩至 15min，漏测↓40%</div>
+        </div>
+        <div class="mk-card" style="margin-bottom:8px">
+          <div class="mk-ct">AI 用例生成器</div>
+          <div class="mk-cb"><b>问题</b> 写用例慢 · <b>做法</b> RAG+模板 · <b>结果</b> 覆盖↑，单人日产能×3</div>
+        </div>
+        <div class="mk-card">
+          <div class="mk-ct">日志巡检 Bot</div>
+          <div class="mk-cb"><b>问题</b> 线上告警滞后 · <b>做法</b> 规则+LLM 摘要 · <b>结果</b> MTTR↓35%</div>
+        </div>
+      </div>
+      <div class="mk-sec" style="padding-top:0">
+        <div class="mk-sl">About</div>
+        <div class="mk-st">关于</div>
+        <div class="mk-cb">5 年测试/质量方向，近 1 年把 AI 融进工程流程。下面是正在做的 →</div>
+        <div class="mk-now"><div class="lab">Now</div><p>在做 AI 辅助测试用例生成，整理一套可开源的提示词模板。</p></div>
+      </div>
+      <div class="mk-foot">contact@ · github.com/Lawwaikit</div>
+    </div>
+    <div class="meta">
+      <span class="tag">方案 A</span>
+      <h3>作品集优先</h3>
+      <p><b>首页直接放大项目</b>：Hero 之后立刻是 2–3 个带「问题→做法→结果」的案例卡，关于页压缩成侧栏式短简介。博客退为次级入口。</p>
+      <ul>
+        <li>项目用 <b>case-study</b> 结构，而非标签卡</li>
+        <li>加入 metrics（周期/覆盖率/产能）让成果可量化</li>
+        <li>新增 <b>Now 板块</b>：正在做什么，体现「活人感」</li>
+      </ul>
+      <div class="fit"><b>适合：</b>项目/成果是你最强资产，且想让人 5 秒看懂「你干嘛的」。</div>
+    </div>
+  </div>
+
+  <!-- ===== SCHEME B ===== -->
+  <div class="scheme">
+    <div class="mk">
+      <div class="mk-hero">
+        <div class="mk-k">Lawwaikit · Writing</div>
+        <div class="mk-h">我写关于测试、AI 工具与工程效率的事</div>
+        <div class="mk-sub">技术笔记 · 复盘 · 工具实验记录</div>
+        <div class="mk-tags"><span class="mk-tag">测试</span><span class="mk-tag">AI</span><span class="mk-tag">自动化</span></div>
+        <div class="mk-btns"><span class="mk-btn">读最新</span><span class="mk-btn ghost">看项目</span></div>
+      </div>
+      <div class="mk-sec">
+        <div class="mk-sl">Latest</div>
+        <div class="mk-st">最新文章</div>
+        <div class="mk-row"><span>用 RAG 给测试用例做检索增强</span><span class="d">07-02</span></div>
+        <div class="mk-row"><span>把 pytest 并行跑进 CI 的踩坑</span><span class="d">06-18</span></div>
+        <div class="mk-row"><span>AI 辅助写断言的 3 种姿势</span><span class="d">05-30</span></div>
+        <div class="mk-row"><span>日志巡检 Bot 的提示词结构</span><span class="d">05-11</span></div>
+      </div>
+      <div class="mk-sec" style="padding-top:0">
+        <div class="mk-sl">Topics</div>
+        <div class="mk-st">主题索引</div>
+        <div class="mk-cloud"><span>质量保障</span><span>AI 工作流</span><span>自动化</span><span>CI/CD</span><span>提示词</span><span>复盘</span></div>
+      </div>
+      <div class="mk-sec" style="padding-top:0">
+        <div class="mk-sl">Projects</div>
+        <div class="mk-st">项目（紧凑列表）</div>
+        <div class="mk-row"><span>自动化回归平台</span><span class="d">case study →</span></div>
+        <div class="mk-row"><span>AI 用例生成器</span><span class="d">case study →</span></div>
+      </div>
+      <div class="mk-foot">订阅 RSS · github.com/Lawwaikit</div>
+    </div>
+    <div class="meta">
+      <span class="tag">方案 B</span>
+      <h3>写作 / 知识花园</h3>
+      <p><b>博客变成主角</b>：首页先放最新文章 + 主题索引（tag 云），项目退为底部紧凑列表。适合走「数字花园」路线。</p>
+      <ul>
+        <li>文章按 <b>主题</b> 而非时间组织，便于长期沉淀</li>
+        <li>项目卡链接到对应复盘文，形成「做→写」闭环</li>
+        <li>可加 RSS /  Newsletter 入口</li>
+      </ul>
+      <div class="fit"><b>适合：</b>你更愿意用「写」建立影响力，项目相对少或偏内部。</div>
+    </div>
+  </div>
+
+  <!-- ===== SCHEME C ===== -->
+  <div class="scheme featured">
+    <div class="mk">
+      <div class="mk-hero">
+        <div class="mk-k" style="font-family:var(--font-m)">Lawwaikit — 关于 / 项目 / 写作 / 现在 / 联系</div>
+        <div class="mk-h">测试开发 × AI 工具实践</div>
+        <div class="mk-sub">一个页面，看完我是谁、做过什么、在想什么。</div>
+        <div class="mk-tags"><span class="mk-tag">质量保障</span><span class="mk-tag">AI 工程</span><span class="mk-tag">写作</span></div>
+      </div>
+      <div class="mk-sec">
+        <div class="mk-sl">About</div>
+        <div class="mk-st">关于我</div>
+        <div class="mk-cb">5 年测试/质量，近 1 年把 AI 融进工程流程。相信「可复用的小工具」比宏大系统更耐用。</div>
+      </div>
+      <div class="mk-sec" style="padding-top:0">
+        <div class="mk-sl">Work</div>
+        <div class="mk-st">项目</div>
+        <div class="mk-g2">
+          <div class="mk-card"><div class="mk-ct">回归平台</div><div class="mk-cb">2h→15min</div></div>
+          <div class="mk-card"><div class="mk-ct">用例生成器</div><div class="mk-cb">产能×3</div></div>
+          <div class="mk-card"><div class="mk-ct">巡检 Bot</div><div class="mk-cb">MTTR↓35%</div></div>
+          <div class="mk-card"><div class="mk-ct">提示词模板</div><div class="mk-cb">开源中</div></div>
+        </div>
+      </div>
+      <div class="mk-sec" style="padding-top:0">
+        <div class="mk-sl">Writing</div>
+        <div class="mk-st">写作</div>
+        <div class="mk-row"><span>RAG 增强测试用例</span><span class="d">07-02</span></div>
+        <div class="mk-row"><span>pytest 并行踩坑</span><span class="d">06-18</span></div>
+      </div>
+      <div class="mk-sec" style="padding-top:0">
+        <div class="mk-now"><div class="lab">Now</div><p>在整理可开源的 AI 测试用例提示词模板集。</p></div>
+      </div>
+      <div class="mk-foot">contact@ · github.com/Lawwaikit · 单页滚动</div>
+    </div>
+    <div class="meta">
+      <span class="tag">方案 C · 推荐起步</span>
+      <h3>单页滚动个人站</h3>
+      <p><b>所有内容收进一个滚动页</b>：顶部 sticky 锚点导航（关于/项目/写作/现在/联系）。最 cohesive、维护最省，天然适合个人站。</p>
+      <ul>
+        <li>保留现有 Clay Cool 视觉，只是从「多页」变「单页分区」</li>
+        <li>新增 <b>Now</b> 板块，低成本体现「持续更新」</li>
+        <li>博客页可先留空，将来作为独立长文入口</li>
+      </ul>
+      <div class="fit"><b>适合：</b>想快速成型、内容量中等、不愿维护多页跳转的人。最稳的第一步。</div>
+    </div>
+  </div>
+
+  <!-- ===== SCHEME D ===== -->
+  <div class="scheme">
+    <div class="mk">
+      <div class="mk-hero">
+        <div class="mk-k">Lawwaikit · QA &amp; AI Tools</div>
+        <div class="mk-h">质量保障 + AI 工程，做出能长期用的东西</div>
+        <div class="mk-sub">一句话定位 · 3 个聚焦方向</div>
+        <div class="mk-tags"><span class="mk-tag">质量</span><span class="mk-tag">AI</span><span class="mk-tag">效率</span></div>
+        <div class="mk-btns"><span class="mk-btn">项目</span><span class="mk-btn ghost">关于</span></div>
+      </div>
+      <div class="mk-sec">
+        <div class="mk-sl">Focus</div>
+        <div class="mk-st">我关注的方向</div>
+        <div class="mk-g3">
+          <div class="mk-card"><div class="mk-ct">可落地质量</div><div class="mk-cb">自动化+CI</div></div>
+          <div class="mk-card"><div class="mk-ct">AI 工程</div><div class="mk-cb">RAG+提示词</div></div>
+          <div class="mk-card"><div class="mk-ct">技术写作</div><div class="mk-cb">复盘沉淀</div></div>
+        </div>
+      </div>
+      <div class="mk-sec" style="padding-top:0">
+        <div class="mk-sl">Selected</div>
+        <div class="mk-st">精选（2）</div>
+        <div class="mk-card"><div class="mk-ct">自动化回归平台 →</div><div class="mk-cb">2h→15min · 漏测↓40%</div></div>
+      </div>
+      <div class="mk-sec" style="padding-top:0">
+        <div class="mk-sl">Writing</div>
+        <div class="mk-st">最新（2）</div>
+        <div class="mk-row"><span>RAG 增强测试用例</span><span class="d">07-02</span></div>
+      </div>
+      <div class="mk-foot">多页结构：首页 / 关于(+Now) / 项目(case) / 写作 / Uses / 联系</div>
+    </div>
+    <div class="meta">
+      <span class="tag">方案 D</span>
+      <h3>完整分站（内容饱满）</h3>
+      <p><b>保留多页结构但填实</b>：首页聚焦 3 点 + 精选；关于页加 Now；项目页改 case-study 带指标；新增 <b>Uses（工具清单）</b> 板块；联系页补全渠道。</p>
+      <ul>
+        <li>信息最全，但维护成本最高（多页同步）</li>
+        <li>新增板块：<b>Uses</b>（你用什么工具）、<b>Now</b>、可能的 <b>Resume</b> 下载</li>
+        <li>适合作为「长期目标态」，分阶段落地</li>
+      </ul>
+      <div class="fit"><b>适合：</b>内容已较丰富、想做成像样作品集/名片站的人。</div>
+    </div>
+  </div>
+
+  <!-- ===== COMPARISON ===== -->
+  <div class="panel">
+    <h2>四套方案横向对比</h2>
+    <p class="sub">同一套 Clay Cool 视觉下，内容重心与维护成本的差别。</p>
+    <table>
+      <tr><th>维度</th><th>A 作品集优先</th><th>B 写作花园</th><th>C 单页滚动 ★</th><th>D 完整分站</th></tr>
+      <tr><td>内容重心</td><td>项目案例</td><td>文章/主题</td><td>均衡·单页</td><td>全而精</td></tr>
+      <tr><td>页面数</td><td>多页（项目为主）</td><td>多页（博客为主）</td><td>1 页</td><td>5–6 页</td></tr>
+      <tr><td>维护成本</td><td>中</td><td>中高</td><td>低</td><td>高</td></tr>
+      <tr><td>新增板块</td><td>Now</td><td>主题索引/RSS</td><td>Now</td><td>Now / Uses / Resume</td></tr>
+      <tr><td>最适合</td><td>成果强</td><td>爱写</td><td>快速成型</td><td>做作品集</td></tr>
+      <tr><td>落地风险</td><td>需真实项目</td><td>需持续产出</td><td>最低</td><td>需较多内容</td></tr>
+    </table>
+  </div>
+
+  <!-- ===== RECOMMENDATION ===== -->
+  <div class="rec">
+    <h2>我的建议</h2>
+    <p><b>短期（本周就能做）：走方案 C 单页滚动。</b>它最稳、维护最省，且把「关于 / 项目 / 写作 / Now / 联系」一次讲清，正好补齐你现在「板块都薄、看不出重点」的短板。同时填入真实项目与一句清晰定位，先把「待补充」扫掉。</p>
+    <p><b>中期：把项目卡升级为方案 A 的 case-study 结构</b>（问题→做法→结果 + 指标），这是个人站最有说服力的部分。</p>
+    <p><b>长期：若内容变多，再演进到方案 D</b>——拆出独立项目页、加 Uses / Resume。博客页现在留空，将来作为长文入口接回方案 B 的写作流。</p>
+    <p style="color:var(--mut);font-size:12.5px;margin-top:10px">无论选哪套，第一步都是<b>确定身份定位</b>（我建议用「测试开发 / AI 工具实践」，与技能页统一），并补 2–3 个真实项目。我可以据此重写首页与关于页内容，继续沿用 Clay Cool 样式。</p>
+  </div>
+
+  <p class="note">预览页为独立设计稿，未改动站点任何文件。选定方案后，我会改写对应页面内容与结构，并保留现有 Clay Cool（C3）视觉。</p>
+
+</div>
+</body>
+</html>

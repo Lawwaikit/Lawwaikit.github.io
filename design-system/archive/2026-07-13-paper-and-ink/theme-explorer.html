@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>设计语言导出 · 主题方案预览</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,600&family=Figtree:wght@400;600;700&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --host-bg:#fafaf8; --host-ink:#1c1c1a; --host-muted:#6b6b66; --host-line:#e3e1db;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--host-bg); color:var(--host-ink);
+    font-family:'Figtree','PingFang SC','Microsoft YaHei',sans-serif;
+    line-height:1.6; padding:0 0 5rem;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+  header.top{padding:3.5rem 0 2.2rem;border-bottom:1px solid var(--host-line)}
+  header.top .eyebrow{
+    font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.22em;
+    text-transform:uppercase;color:#b4431e;font-weight:700;margin-bottom:.9rem;display:block;
+  }
+  header.top h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(2rem,4vw,3rem);line-height:1.08;letter-spacing:-.02em}
+  header.top p{margin-top:1rem;color:var(--host-muted);max-width:60ch;font-size:1.02rem}
+
+  .section-label{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--host-muted);margin:3rem 0 1.2rem;font-weight:700}
+
+  /* current strip */
+  .current{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;background:#fff;border:1px solid var(--host-line);border-radius:12px;padding:1.6rem}
+  .current .meta{flex:1;min-width:240px}
+  .current .meta h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600}
+  .current .meta p{color:var(--host-muted);font-size:.92rem;margin-top:.3rem}
+  .current .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+  .current .chip{font-family:'Space Mono',monospace;font-size:.7rem;border:1px solid var(--host-line);border-radius:999px;padding:.2rem .6rem;color:var(--host-muted)}
+  .current .strip{display:flex;height:54px;border-radius:8px;overflow:hidden;border:1px solid var(--host-line);flex:1.4;min-width:300px}
+  .current .strip span{flex:1}
+
+  /* theme grid */
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    background:#fff;border:1px solid var(--host-line);border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .card-head{padding:1.4rem 1.4rem 1rem;border-bottom:1px solid var(--host-line)}
+  .card-head .name{font-family:'Fraunces',serif;font-weight:600;font-size:1.55rem;letter-spacing:-.01em}
+  .card-head .tag{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.04em;color:#b4431e;margin-top:.3rem}
+  .card-head .pos{color:var(--host-muted);font-size:.9rem;margin-top:.6rem;line-height:1.55}
+
+  /* live sample — uses the theme's own variables */
+  .sample{
+    --accent:var(--t-accent); --accent2:var(--t-accent2); --bg:var(--t-bg); --surface:var(--t-surface);
+    --ink:var(--t-ink); --muted:var(--t-muted); --line:var(--t-line); --soft:var(--t-soft);
+    --f-display:var(--t-fd); --f-body:var(--t-fb); --f-mono:var(--t-fm);
+    padding:1.4rem;background:var(--bg);color:var(--ink);font-family:var(--f-body);
+    display:flex;flex-direction:column;gap:.9rem;
+  }
+  .sample .kicker{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .sample .stitle{font-family:var(--f-display);font-weight:600;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em}
+  .sample .sbody{color:var(--muted);font-size:.92rem;line-height:1.6}
+  .sample .srow{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:.2rem}
+  .sample .sbtn{
+    font-family:var(--f-body);font-weight:700;font-size:.9rem;border:1.5px solid var(--ink);
+    background:var(--accent);color:var(--bg);border-radius:4px;padding:.55rem 1rem;box-shadow:3px 3px 0 var(--ink);
+  }
+  .sample .stag{
+    font-family:var(--f-mono);font-size:.72rem;font-weight:700;border:1.5px solid var(--line);
+    border-radius:999px;padding:.25rem .7rem;color:var(--muted);background:var(--surface);
+  }
+
+  /* swatches */
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--host-line)}
+  .sw{position:relative}
+  .sw .fill{height:54px;border-right:1px solid rgba(0,0,0,.06)}
+  .sw:last-child .fill{border-right:none}
+  .sw .lab{padding:.4rem .5rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--host-muted);line-height:1.3}
+  .sw .lab b{display:block;color:var(--host-ink);font-weight:700;font-size:.66rem}
+
+  /* specs */
+  .specs{padding:1.2rem 1.4rem 1.5rem;border-top:1px solid var(--host-line);font-size:.86rem}
+  .specs .row{display:grid;grid-template-columns:84px 1fr;gap:.6rem;padding:.35rem 0;border-bottom:1px dashed #eee}
+  .specs .row:last-child{border-bottom:none}
+  .specs .k{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--host-muted);font-weight:700;padding-top:.1rem}
+  .specs .v{color:var(--host-ink);line-height:1.5}
+  .specs .diff{margin-top:.8rem;background:#fbf6ef;border:1px solid #ecdcc8;border-radius:8px;padding:.8rem .9rem;font-size:.84rem;color:#5a4a36;line-height:1.55}
+  .specs .diff b{color:#b4431e}
+
+  footer{margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--host-line);color:var(--host-muted);font-size:.82rem;font-family:'Space Mono',monospace}
+  footer a{color:#b4431e}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="eyebrow">Design Tokens · Exported</span>
+    <h1>设计语言导出 &amp; 主题方案</h1>
+    <p>已把当前 <strong>Paper &amp; Ink</strong> 设计语言导出为 <code>design-system/design-tokens.json</code>，并基于此生成 4 套风格方向。下方每张卡片都是可直接落地的色板 + 组件预览，核心差异已标注。</p>
+  </header>
+
+  <div class="section-label">当前设计语言 · Paper &amp; Ink（基准）</div>
+  <div class="current">
+    <div class="meta">
+      <h3>Paper &amp; Ink</h3>
+      <p>暖色奶油纸 + 墨色字 + 锈红/松绿双品牌色，risograph 硬阴影，刻意的不规整。</p>
+      <div class="chips">
+        <span class="chip">Fraunces · Figtree · Space Mono</span>
+        <span class="chip">圆角 2–5px</span>
+        <span class="chip">硬偏移阴影</span>
+        <span class="chip">±0.6° 旋转</span>
+      </div>
+    </div>
+    <div class="strip" id="currentStrip"></div>
+  </div>
+
+  <div class="section-label">4 套替代主题方案</div>
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    导出文件：design-system/design-tokens.json · design-system/themes.json ｜ 预览：design-system/theme-explorer.html<br>
+    应用方式：将对应主题的 :root / [data-theme] 变量块替换进 css/style.css 即可。
+  </footer>
+</div>
+
+<script>
+const CURRENT = [
+  {role:'accent',  hex:'#B4431E'}, {role:'accent-2',hex:'#2C5545'},
+  {role:'paper',   hex:'#F4EDE0'}, {role:'surface', hex:'#FBF7EF'},
+  {role:'ink',     hex:'#221E18'}, {role:'ink-2',   hex:'#6E655A'},
+  {role:'line',    hex:'#D9CDB8'}, {role:'soft',    hex:'#F0D9CC'}
+];
+
+const THEMES = [
+  {
+    id:'risograph-pop', name:'Risograph Pop', tag:'网印流行 · 双专色套印的年轻活力',
+    pos:'面向作品集 / 个人品牌的活泼方向。risograph 双专色套印观感——高饱和但不过度，带一点印刷错位的不完美，比当前更外向。',
+    fonts:{display:"'Fraunces', Georgia, serif", body:"'Space Grotesk', 'PingFang SC', sans-serif", mono:"'Space Mono', monospace"},
+    palette:[
+      {role:'accent',hex:'#C8326B'},{role:'accent-2',hex:'#1F8A80'},
+      {role:'paper',hex:'#FBE9DD'},{role:'surface',hex:'#FFF6EC'},
+      {role:'ink',hex:'#2B2622'},{role:'ink-2',hex:'#8A7A6E'},
+      {role:'line',hex:'#E7C9B4'},{role:'soft',hex:'#F6CBD9'}
+    ],
+    spacing:'紧凑 (compact) — 栅格间隙 1rem，纵向留白略减。',
+    radius:'锐利 (sharp) — 2–4px 硬边。',
+    shadow:'硬偏移 3px 3px 0 ink，hover 5px。',
+    irregularity:'旋转加大到 ±1.2°，错落更明显。',
+    diff:'主色 锈红→<b>洋红</b>，辅色 松绿→<b>青</b>；更鲜艳、更不规整、更年轻。保留衬线+等宽反差，能量更高。'
+  },
+  {
+    id:'brutalist-mono', name:'Brutalist Mono', tag:'粗野等宽 · 黑白强对比 + 单色高亮',
+    pos:'极简技术的编辑器美学。去掉一切圆角与衬线，纯黑白骨架 + 单一高亮色，硬阴影，强调结构本身。适合工程向 / 极客个人站。',
+    fonts:{display:"'Space Grotesk', 'Helvetica Neue', sans-serif", body:"'Space Grotesk', 'PingFang SC', sans-serif", mono:"'JetBrains Mono', 'Space Mono', monospace"},
+    palette:[
+      {role:'accent',hex:'#FF4D00'},{role:'accent-2',hex:'#0A0A0A'},
+      {role:'paper',hex:'#F4F2EC'},{role:'surface',hex:'#FFFFFF'},
+      {role:'ink',hex:'#0A0A0A'},{role:'ink-2',hex:'#5A5A55'},
+      {role:'line',hex:'#0A0A0A'},{role:'soft',hex:'#EDEAE0'}
+    ],
+    spacing:'紧凑且严格 (compact & strict) — 栅格对齐但故意错位。',
+    radius:'直角 (square) — 0px，全方切。',
+    shadow:'硬偏移 4px 4px 0 ink，无模糊。',
+    irregularity:'几乎无旋转；张力来自粗边框与错位网格。',
+    diff:'彻底去掉圆角与衬线，转为<b>黑白 + 单色高亮（橙红）</b>。最克制、最技术、最"编辑器"，与暖色印刷感两极对照。'
+  },
+  {
+    id:'quiet-luxury', name:'Quiet Luxury', tag:'静奢柔编辑 · 杂志内页的克制留白',
+    pos:'高级、安静、杂志内页气质。柔和大地色，衬线主导，宽松留白，几乎无装饰。从"印刷硬边"转向"杂志软边"，适合内容 / 写作者品牌。',
+    fonts:{display:"'Fraunces', 'Noto Serif SC', Georgia, serif", body:"'Newsreader', 'Source Serif 4', Georgia, serif", mono:"'Space Mono', monospace"},
+    palette:[
+      {role:'accent',hex:'#A6634C'},{role:'accent-2',hex:'#7E8B6B'},
+      {role:'paper',hex:'#F6F3EC'},{role:'surface',hex:'#FFFFFF'},
+      {role:'ink',hex:'#2A2723'},{role:'ink-2',hex:'#7A7268'},
+      {role:'line',hex:'#E3DDD2'},{role:'soft',hex:'#EFE7DC'}
+    ],
+    spacing:'宽松 (loose) — 纵向留白 6rem，栅格间隙 2rem。',
+    radius:'圆润 (soft) — 8–12px，边角柔和。',
+    shadow:'细发丝边框 + 极淡柔影 rgba(0,0,0,.05)。',
+    irregularity:'无旋转、无错位；秩序来自节制与留白。',
+    diff:'从"硬边印刷"转向"软边杂志"：<b>全衬线、留白更大、圆角更柔、几乎无硬阴影</b>。更安静高级，但去掉了最具识别度的 risograph 硬边。'
+  },
+  {
+    id:'terminus-dark', name:'Terminus Dark', tag:'终端暗色 · 温暖近黑底 + 琥珀高亮',
+    pos:'暗色原生（非"反色"）的开发者 / 极客方向。温暖近黑底 + 奶白字 + 琥珀金高亮，等宽技术味偏重，中等圆角。适合技术博客 / 工具型站点。',
+    fonts:{display:"'Space Grotesk', 'PingFang SC', sans-serif", body:"'JetBrains Mono', 'Space Mono', monospace", mono:"'JetBrains Mono', monospace"},
+    palette:[
+      {role:'accent',hex:'#E0A33E'},{role:'accent-2',hex:'#5FB6A8'},
+      {role:'paper',hex:'#12100E'},{role:'surface',hex:'#1C1916'},
+      {role:'ink',hex:'#EDE4D6'},{role:'ink-2',hex:'#B8AC99'},
+      {role:'line',hex:'#3A332B'},{role:'soft',hex:'#2C2620'}
+    ],
+    spacing:'中等 (medium) — 暗色下保持可读密度。',
+    radius:'中等 (medium) — 6–8px，圆角不夸张。',
+    shadow:'硬偏移阴影用奶白 ink-shadow，暗底上"浮起"。',
+    irregularity:'轻微旋转 0.3°，比当前克制。',
+    diff:'暗色原生（不是当前浅色的反色版）；主色 锈红→<b>琥珀金</b>，辅色 松绿→<b>青</b>；等宽更重、圆角中等。是"换一种光"而非"换一种色"。'
+  }
+];
+
+// current strip
+const strip = document.getElementById('currentStrip');
+CURRENT.forEach(c=>{
+  const s=document.createElement('span'); s.style.background=c.hex;
+  strip.appendChild(s);
+});
+
+// theme cards
+const grid = document.getElementById('grid');
+THEMES.forEach(t=>{
+  const card=document.createElement('div'); card.className='card';
+  const swatchHTML = t.palette.map(p=>`
+    <div class="sw">
+      <div class="fill" style="background:${p.hex}"></div>
+      <div class="lab"><b>${p.role}</b>${p.hex}</div>
+    </div>`).join('');
+
+  card.innerHTML = `
+    <div class="card-head">
+      <div class="name">${t.name}</div>
+      <div class="tag">${t.tag}</div>
+      <div class="pos">${t.pos}</div>
+    </div>
+    <div class="sample"
+         style="--t-accent:${t.palette[0].hex};--t-accent2:${t.palette[1].hex};--t-bg:${t.palette[2].hex};--t-surface:${t.palette[3].hex};--t-ink:${t.palette[4].hex};--t-muted:${t.palette[5].hex};--t-line:${t.palette[6].hex};--t-soft:${t.palette[7].hex};--t-fd:${t.fonts.display};--t-fb:${t.fonts.body};--t-fm:${t.fonts.mono};">
+      <div class="kicker">FEATURED</div>
+      <div class="stitle">手工感设计</div>
+      <div class="sbody">在规整与随意之间，找到属于这个站点的呼吸节奏。</div>
+      <div class="srow">
+        <span class="sbtn">查看项目</span>
+        <span class="stag">UI / 2026</span>
+      </div>
+    </div>
+    <div class="swatches">${swatchHTML}</div>
+    <div class="specs">
+      <div class="row"><div class="k">字体</div><div class="v">${t.fonts.display.split(',')[0].replace(/['"]/g,'')} · ${t.fonts.body.split(',')[0].replace(/['"]/g,'')} · ${t.fonts.mono.split(',')[0].replace(/['"]/g,'')}</div></div>
+      <div class="row"><div class="k">间距</div><div class="v">${t.spacing}</div></div>
+      <div class="row"><div class="k">圆角</div><div class="v">${t.radius}</div></div>
+      <div class="row"><div class="k">阴影</div><div class="v">${t.shadow}</div></div>
+      <div class="row"><div class="k">不规则</div><div class="v">${t.irregularity}</div></div>
+      <div class="diff"><b>对比当前 ▸</b> ${t.diff}</div>
+    </div>`;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>
